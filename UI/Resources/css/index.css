@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    margin-bottom: 0.25em;
+}
+
+img {
+    display: block;
+}
+
+body {
+    width: 100%;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.container {
+    width: 100%;
+    height: 600vh;
+}
+
+.main-nav {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.main-nav > .wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.wrapper > .navbar {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar li {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #333333;
+    background: transparent;
+    width: 100%;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar li a:hover,
+.navbar li a:focus {
+    color: #999;
+    opacity:0.8;
+}
+
+.navbar li.logo a img {
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar > .navbar-left {
+    width: 40%;
+    padding-top: 45px;
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.navbar > .navbar-logoholder {
+    widows: 20%;
+    display: flex;
+}
+
+.navbar > .navbar-logoholder img {
+    width: 70%;
+    max-width: 170px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar > .navbar-right {
+    width: 40%;
+    padding-top: 45px;
+    padding-bottom: 20px;
+    display: flex;
+}
+
+
+.navbar > .navbar-left > .nav-items {
+    width: 33%;
+}
+
+.navbar > .navbar-right > .nav-items {
+    width: 33%;
+}
+    
