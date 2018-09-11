@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat|Rubik');
 
 * {
     margin: 0;
@@ -8,7 +8,13 @@
 li {
     margin-bottom: 0.25em;
 }
-
+ ul { 
+     list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #131313;
+}
 img {
     display: block;
 }
@@ -22,10 +28,11 @@ body {
 
 .container {
     width: 100%;
-    height: 600vh;
+    /* height: 400vh; */
 }
 
 .main-nav {
+    height: 18vh;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -110,4 +117,420 @@ body {
 .navbar > .navbar-right > .nav-items {
     width: 33%;
 }
-    
+
+.main-content {
+    width: 100%;
+    height: 75vh;
+    background: #e9e9e9;
+}
+.main-content .bgimg {
+    height: 100%;
+    max-width: 1800px;
+    background: url('../images/shopify-image-background.jpg') center 0px no-repeat;
+    background-size: cover;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main-content .bgimg > .wrapper {
+    max-width: 1300px;
+    padding: 0 20px;
+}
+
+.wrapper > .content-food {
+    width: 100%;
+    padding-bottom: 10em;
+    padding-top: 10em;
+    padding-left: 20px;
+}
+
+.wrapper > .content-food h1 {
+    font-size: 62px;
+    line-height: 1.1;
+    color: #4d4d4d;
+}
+
+.wrapper > .content-food p {
+    line-height: 1.1;
+    color: rgb(32, 48, 21);
+}
+
+.how-we-serve-you {
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+}
+
+.how-we-serve-you > .title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #131313;
+    letter-spacing: -.2px;
+    text-align: center;
+    line-height: 31px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.how-we-serve-you .howtostart-list {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.howtostart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.howtostart-item img {
+    width: 40%;
+    max-width: 100px;
+    filter: drop-shadow(0 2px 3px #aaa);
+}
+
+.howtostart-item h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.howtostart-item p {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.howtostart-item h4 > a:hover {
+    color: aquamarine;
+}
+
+.wrapper-about {
+    margin-right: 0;
+    padding: 0;
+    background: rgba(239, 239, 239, 0.534);
+}
+
+.wrapper-about > .wrapper {
+    max-width: 1300px;
+    padding: 0 20px;
+}
+
+.content {
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.content.about-us {
+    min-height: 290px;
+    background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/matchax.gif?1175396…) 17% 60% no-repeat;
+    background-size: 260px;
+    margin-bottom: 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content.about-us .group-left {
+    min-height: 290px;
+    width: 18%;
+    margin-left: 15%;
+    margin-bottom: 30px;
+}
+
+.content.about-us h4 {
+    display: block;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 32px;
+    margin-top: 110px;
+    letter-spacing: .09em;
+    color: #333333;
+    float: right;
+    width: 100%;
+    text-align: left;
+}
+
+.about-us .group-right {
+    padding-right: 0;
+    width: 60%;
+    float: right;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+h3.vertical-text {
+    transform: rotate(-90deg);
+    height: 100%;
+    width: 100%;
+    font: 14px 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    text-align: center;
+    margin-left: 60%;
+    display: block;
+}
+
+.group-left:after,
+.group-right:after,
+.wrapper-about .wrapper:after,
+.wrapper-about:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.services-wrapper {
+    padding-bottom: 25px;
+}
+
+.services-wrapper .services {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+h2.service-title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    padding-bottom: 24px;
+    padding-top: 32px;
+    font-weight: 500;
+}
+
+.food-wrap {
+    text-align: left;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 15%;
+}
+
+.food-wrap .items {
+    border: 2px solid #ccc;
+    flex-basis: 25%;
+    height: auto;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+}
+
+.food-wrap .items .item-image {
+    width: 100%;
+    background-color: #d2d2d2;
+    background-position: 50%;
+    background-size: 100%;
+    height: 0;
+    overflow-y: hidden;
+    padding-bottom: 56.25%;
+}
+
+.food-wrap .item-body {
+    border-top: 1px solid #e5e5e5;
+    width: 100%;
+    background: #e5e5e5;
+    text-align: center;
+    overflow: hidden;
+}
+
+.food-wrap .item-body h3.title {
+    padding: 10px;
+    display: block;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 30px;
+    letter-spacing: .09em;
+    color: #111;
+    float: right;
+    width: 100%;
+    text-align: left;
+}
+
+.item-body p {
+    font-size: 12px;
+    color: #131313;
+    padding: 10px;
+}
+
+.contact-wrapper {
+    background: linear-gradient(30deg,#577862,#6c8876);
+    color: #fff;
+}
+
+.contact-us {
+    max-width: 1008px;
+    margin: 0 auto;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.header-container {
+    text-align: left;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    margin-right: 0;
+    margin-left: -16px;
+    padding-right: 0;
+    padding-left: 0;
+    letter-spacing: -.31em;
+    text-rendering: optimizespeed;
+}
+
+h2.contact-us-title {
+    width: 100%;
+    display: inline-block;
+    padding-left: 16px;
+    text-align: left;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+    font-size: 1.625rem;
+    line-height: 1.875rem;
+    font-weight: 400;
+    padding-bottom: 16px;
+    padding-top: 24px;
+}
+
+.contact-us-icon-list {
+    text-align: right;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    margin-left: -16px;
+    margin-left: -8px;
+    padding-right: 0;
+    padding-left: 0;
+    letter-spacing: -.31em;
+    text-rendering: optimizespeed;
+    justify-content: flex-end;
+    /* margin-right: 8.33333%; */
+    padding-bottom: 55px;
+}
+
+.contact-social-link:not(:last-of-type) {
+    margin-right: 32px;
+}
+
+.contact-social-link-icon {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+}
+
+.contact-social-link-icon.twitter {
+    background: url('../images/icons8-twitter.svg') no-repeat;
+}
+
+.contact-social-link-icon.facebook {
+    background: url('../images/icons8-facebook.svg') no-repeat;
+}
+
+.contact-social-link-icon.instagram {
+    background: url('../images/icons8-instagram.svg') no-repeat;
+}
+
+.contact-social-link-icon.pinterest {
+    background: url('../images/icons8-pinterest.svg') no-repeat;
+}
+
+.contact-social-link:hover {
+    opacity: 0.5;
+}
+
+.footer-wrapper {
+    padding-top: 60px;
+    background: #131313;
+    text-align: center;
+}
+
+.footer-wrapper .footer {
+    width: 100%;
+}
+
+.footer .section-list {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    color: #fff;
+}
+
+.footer .section-list .foothead {
+    color: #fff;
+    font-size: 13px;
+    padding: 0 0 20px 0;
+    font-weight: 700;
+}
+
+.footer .section-list ul {
+    padding-bottom: 20px;
+}
+
+.footer .section-list ul li {
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.footer .section-list ul li a {
+    color: #fff;
+}
+
+.footer .section-apps {
+    padding: 0 10px 30px;
+    color: white;
+}
+
+.footer .section-apps a {
+    display: inline-block;
+}
+
+.footer .section-apps .android,
+.footer .section-apps .apple {
+    background: url('../images/Available_on_the_App_Store_\(black\)_SVG.svg') no-repeat center center;
+    background-size: 100%;
+    width: 150px;
+    border-radius: 0;
+    height: 70px;
+    margin: 0 4px;
+    border: 0;
+}
+
+.footer .section-apps .android {
+    background: url('../images/google-play-download-android-app.svg') no-repeat center center;
+    background-size: 100%;
+}
+
+.footer .section-social {
+    padding: 0 0 20px;
+    color: white;
+}
+
+.section-social .contact-social-link-icon {
+    background-size: 70%;
+}
+
+.footer .section-copyright {
+    font-size: 12px;
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    line-height: 1.8em;
+    color: #fff;
+}
+
+.footer .section-copyright a {
+    color: #fff;
+    font-size: 12px;
+}
