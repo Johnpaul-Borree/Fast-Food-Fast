@@ -94,7 +94,7 @@ input[type='submit']{
     width: 200px;
     position: absolute;
     left: 80%;
-    top: 65%;
+    top: 80%;
     transform: translateX(-50%);
     color: #555;
     background: none;
@@ -221,4 +221,14 @@ input[type='submit']:focus { outline: none; }
 }
 #strength-status{
     color: #999;
+}
+
+@media only screen and (max-width: 566px) {
+    .heading > h2 {
+        font-size: 1.2em;
+    }
+
+    input[type='submit'] {
+        left: 50%;
+    }
 }
