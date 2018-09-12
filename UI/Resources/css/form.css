@@ -232,3 +232,27 @@ input[type='submit']:focus { outline: none; }
         left: 50%;
     }
 }
+
+@media only screen and (max-width: 400px) {
+    .heading > h2 {
+        font-size: 1.2em;
+    }
+
+    input[type='text'], 
+    input[type='password'],
+    input[type='email'],
+    input[type='tel']{
+        font-size: 12px;
+        padding: 10px 10px 10px 5px;
+        width: 180px;
+    }
+
+    .underline {
+        width: 180px;
+      }
+
+    input[type='submit'] {
+        left: 50%;
+    }
+
+}
