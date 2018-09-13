@@ -256,3 +256,9 @@ input[type='submit']:focus { outline: none; }
     }
 
 }
+
+.admin a {
+    text-decoration: none;
+    color: red;
+    font-size: 12px;
+}

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fast Food Fast</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="Resources/css/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="Resources/css/order.css">
+        <link rel="icon" type="image/png" href="Resources/images/logo1.png">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="main-nav">
+                    <div class="logoz">
+                        <a href="../index.html"><img src="Resources/images/logo.png" alt="logo"></a>
+                    </div>                    
+                    <img src="Resources/images/icon-menu.svg" alt="menu" class="menu-toggle">
+                <div class="wrapper">
+                    <ul class="navbar" data-mode="close">
+                        <div class="navbar-left">
+                            <li class="nav-items"><a href="#blog">Services</a></li>
+                            <li class="nav-items"><a href="#about">About us</a></li>
+                            <li class="nav-items"><a href="#contact">Contact</a></li>
+                        </div>
+                        <div class="navbar-logoholder">
+                            <li class="nav-items logo">
+                                <a href="../index.html">
+                                    <img src="Resources/images/logo.png" alt="logo">
+                                </a>
+                            </li>
+                        </div>
+                        <div class="navbar-right">
+                            <li class="nav-items"><a href="#">Logout</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+            <div class="content-container">
+                <div class="order-wrap">
+                    <div class="orders">
+                        <div class="order-title">
+                            <h2 class="title">MAKE YOUR ORERS</h2>
+                            <p>Choose from the given options</p>
+                        </div>
+                        <div class="order-container">                        
+                            <div class="order">
+                                <a href="#breakfast">
+                                <h3 class="title">Breakfast</h3>
+                                <span class="order-name">Start ordering breakfast</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#lunch">
+                                <h3 class="title">Lunch</h3>
+                                <span class="order-name">Start Lunch</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#brunch">
+                                <h3 class="title">Brunch</h3>
+                                <span class="order-name">Get the best fro here</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#breakfast">
+                                <h3 class="title">Snacks</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#breakfast">
+                                <h3 class="title">Dinner</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#anything">
+                                <h3 class="title">AnyFood</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#bakery">
+                                <h3 class="title">Cookies and Bakeries</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#breakfast">
+                                <h3 class="title">Cofee</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                            <div class="order">
+                                <a href="#breakfast">
+                                <h3 class="title">Late Night Orders</h3>
+                                <span class="order-name">Start ordering</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="main-section">
+                        <div class="wrapper">
+                            <ul class="nav">
+                                <li><a href="#breakfast">Breakfast</a></li>
+                                <li><a href="#lunch">Lunch</a></li>
+                                <li><a href="#dinner">Dinner</a></li>
+                                <li><a href="#brunch">Brunch</a></li>
+                                <li><a href="#Snacks">Snacks</a></li>
+                                <li><a href="#AnyFood">AnyFood</a></li>
+                                <li><a href="#cookies">Cookies</a></li>
+                                <li><a href="#cofee">Cofee</a></li>
+                                <li><a href="#night">Late Night Food</a></li>
+                            </ul>
+                            <div class="section-body-wrap">
+                                <div class="section-body">
+                                    <div class="section-food" id="breakfast">
+                                        <div class="header"><h3>Breakfast</h3></div>
+                                        <div class="sections">
+                                            <div class="title"><h4>Bread and Tea</h4></div>
+                                            <div class="number">
+                                                <span>Number in store:</span>&nbsp;
+                                                <span class="in-store">43</span>
+                                            </div>
+                                            <div class="qty">
+                                                <span>QTY:</span>&nbsp;
+                                                <input type="number" id="qtys" placeholder="1">
+                                            </div>
+                                            <div class="unit-price">
+                                                <span>Unit Price:</span>&nbsp;
+                                                <span id="unit">&#x20A6;200</span>
+                                            </div>
+                                            <div class="total">
+                                                <span>total:</span>&nbsp;
+                                                <span id="total">&#x20A6;1000</span>
+                                            </div>
+                                            <div class="submit">
+                                                <form action="#">
+                                                    <input type="submit" value="ORDER">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="sections">
+                                            <div class="title"><h4>Honey with Pap</h4></div>
+                                            <div class="number">
+                                                <span>Number in store:</span>&nbsp;
+                                                <span class="in-store">43</span>
+                                            </div>
+                                            <div class="qty">
+                                                <span>QTY:</span>&nbsp;
+                                                <input type="number" id="qtys" placeholder="1">
+                                            </div>
+                                            <div class="unit-price">
+                                                <span>Unit Price:</span>&nbsp;
+                                                <span id="unit">&#x20A6;200</span>
+                                            </div>
+                                            <div class="total">
+                                                <span>total:</span>&nbsp;
+                                                <span id="total">&#x20A6;1000</span>
+                                            </div>
+                                            <div class="submit">
+                                                <form action="#">
+                                                    <input type="submit" value="ORDER">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="sections">
+                                                <div class="title"><h4>Yam with Sauce</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Honey with bread</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="section-food" id="lunch">
+                                            <div class="header"><h3>Lunch</h3></div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Bread and Tea</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Honey with Pap</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                    <div class="title"><h4>Yam with Sauce</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="sections">
+                                                    <div class="title"><h4>Honey with bread</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <div class="section-food" id="dinner">
+                                            <div class="header"><h3>Dinner</h3></div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Bread and Tea</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Honey with Pap</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                    <div class="title"><h4>Yam with Sauce</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="sections">
+                                                    <div class="title"><h4>Honey with bread</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <div class="section-food" id="brunch">
+                                            <div class="header"><h3>Brunch</h3></div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Bread and Tea</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                <div class="title"><h4>Honey with Pap</h4></div>
+                                                <div class="number">
+                                                    <span>Number in store:</span>&nbsp;
+                                                    <span class="in-store">43</span>
+                                                </div>
+                                                <div class="qty">
+                                                    <span>QTY:</span>&nbsp;
+                                                    <input type="number" id="qtys" placeholder="1">
+                                                </div>
+                                                <div class="unit-price">
+                                                    <span>Unit Price:</span>&nbsp;
+                                                    <span id="unit">&#x20A6;200</span>
+                                                </div>
+                                                <div class="total">
+                                                    <span>total:</span>&nbsp;
+                                                    <span id="total">&#x20A6;1000</span>
+                                                </div>
+                                                <div class="submit">
+                                                    <form action="#">
+                                                        <input type="submit" value="ORDER">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="sections">
+                                                    <div class="title"><h4>Yam with Sauce</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="sections">
+                                                    <div class="title"><h4>Honey with bread</h4></div>
+                                                    <div class="number">
+                                                        <span>Number in store:</span>&nbsp;
+                                                        <span class="in-store">43</span>
+                                                    </div>
+                                                    <div class="qty">
+                                                        <span>QTY:</span>&nbsp;
+                                                        <input type="number" id="qtys" placeholder="1">
+                                                    </div>
+                                                    <div class="unit-price">
+                                                        <span>Unit Price:</span>&nbsp;
+                                                        <span id="unit">&#x20A6;200</span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <span>total:</span>&nbsp;
+                                                        <span id="total">&#x20A6;1000</span>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <form action="#">
+                                                            <input type="submit" value="ORDER">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="footer-wrapper">
+                    <div class="footer">
+                        <div class="section-list">
+                            <h6 class="foothead">What do you care for</h6>
+                            <ul>
+                                <li><a href="#">Join Us by Application</a></li>
+                                <li><a href="#contact">Contact us</a></li>
+                                <li><a href="#">Become a Partner</a></li>
+                                <li><a href="#">Join as a driver</a></li>
+                            </ul>
+                        </div>
+                        <div class="section-list">
+                            <h6 class="foothead">Services</h6>
+                            <ul>
+                                <li><a href="#blog">what do you care for ?</a></li>
+                                <li><a href="#contact">FAQs</a></li>
+                                <li><a href="UI/login.html">Login</a></li>
+                                <li><a href="UI/signup.html">Join</a></li>
+                            </ul>
+                        </div>
+                        <div class="section-apps">
+                            <a class="apple" href="#"></a>
+                            <a class="android" href="#"></a>
+                        </div>
+                        <div class="section-social">
+                            <a href="#">
+                                <span class="contact-social-link-icon instagram"></span>
+                            </a>
+                            <a href="#">
+                                <span class="contact-social-link-icon twitter"></span>
+                            </a>
+                            <a href="#">
+                                <span class="contact-social-link-icon facebook"></span>
+                            </a>
+                        </div>
+                        <div class="section-copyright">
+                            <a href="#">Privacy Policy &amp; T &amp; C's</a>
+                            <br><br>
+                            &copy;2018 Fast Food Fast Ltd. All rights reserved.<br>
+                            floor 91st, Attamah Towers , <br>
+                            Enugu Road, Nsukka, <br>
+                            Enugu State, Nigeria 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="Resources/js/index.js"></script>
+    </body>
+</html>
