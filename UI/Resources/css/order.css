@@ -1,0 +1,46 @@
+.order-wrap {
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.orders {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.order-title {
+    text-align: center;
+}
+
+.order-title > .title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    padding-top: 10px;
+    font-weight: 900;
+    color: #4d4d4d;
+}
+
+.order-title > p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding-bottom: 24px;
+    font-weight: 500;
+    color: #131313;
+}
+
+.order-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+    background: #d8f1d1;
+    width: 100%;
+}
+
+.order-container > div.order {
+    flex-basis: 33.333333333333%;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid #fff;
+}
