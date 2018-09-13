@@ -61,11 +61,16 @@
     color: #fff;
 }
 
+.title-status > .completed a {
+    padding: 5px;
+    background: green;
+}
+
 .title-order .order-title {
     color: #063f21;
 }
 .order-container > .order {
-    flex-basis: 16.6666666666667%;
+    flex-basis: 11.1111111111%;
     text-align: center;
 }
 
