@@ -5,7 +5,7 @@ import orders from '../models/orders';
 export function postOrder (req, res) {
     const {error} = validateOrders(req.body);
     
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return res.status(400).json({status: 'success', message: error.details[0].message});
 
     const order = {
         id: orders.length + 1,
@@ -20,7 +20,7 @@ export function postOrder (req, res) {
 
     orders.push(order);
 
-    res.send(order);
+    res.json(order);
 }
 
 function validateOrders(order) {
