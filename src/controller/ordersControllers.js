@@ -5,6 +5,12 @@ export function getAllOrders (req, res) {
 	res.status(200).json({status: 'Success', Orders: orders});
 }
 
+export function fetchSingleOrder (req, res) {
+	const order = orders.find( o => o.id === parseInt(req.params.orderId));
+	if(!order) return res.status(404).json({status: 'Failed', message: 'No order with the given id'});
+	res.status(200).json({status: 'success', Order: order});
+}
+
 export function postOrder (req, res) {
 	const {error} = validateOrders(req.body);
     
