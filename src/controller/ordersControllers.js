@@ -1,6 +1,9 @@
 import Joi from 'joi';
 import orders from '../models/orders';
 
+export function getAllOrders (req, res) {
+	res.status(200).json({status: 'Success', Orders: orders});
+}
 
 export function postOrder (req, res) {
 	const {error} = validateOrders(req.body);
