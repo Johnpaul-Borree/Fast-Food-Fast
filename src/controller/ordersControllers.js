@@ -35,3 +35,4 @@ function validateOrders(order) {
 	return Joi.validate(order, schema);
     
 }
+
