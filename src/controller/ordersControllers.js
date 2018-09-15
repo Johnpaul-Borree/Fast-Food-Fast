@@ -5,7 +5,8 @@ import orders from '../models/orders';
 export const postOrder = (req, res) => {
 	const {error} = validateOrders(req.body);
     
-	if(error) return res.status(400).json({ status: 'Failed to create order', message: error.details[0].message });
+	if(error) return res.status(400)
+		.json({ status: 'Failed to create order', message: error.details[0].message });
 
 	const order = {
 		id: orders.length + 1,
