@@ -2,7 +2,7 @@ import Joi from 'joi';
 import orders from '../models/orders';
 
 
-export function postOrder (req, res) {
+export const postOrder = (req, res) => {
 	const {error} = validateOrders(req.body);
     
 	if(error) return res.status(400).json({status: 'Failed to create order', message: error.details[0].message});
@@ -21,7 +21,7 @@ export function postOrder (req, res) {
 	orders.push(order);
 
 	res.json({justAdded: order, message: 'order Created'});
-}
+};
 
 function validateOrders(order) {
 	const schema = {
