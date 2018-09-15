@@ -3,6 +3,7 @@ import orders from '../models/orders';
 
 
 export const postOrder = (req, res) => {
+	
 	const { error } = validateOrders(req.body);
     
 	if(error) return res.status(400)
