@@ -91,4 +91,32 @@ describe('ORDERS', () =>{
 				});
 		});
 	});
+  
+	describe('GEt /orders/:orderId', () => {
+		it('Should not get a order with id not equall to order id', (done) => {
+			const orderId = 300;
+			chai.request(router)
+				.get(`/api/v1/orders/${orderId}`)
+				.end((err, res) => {
+					res.should.have.status(404);
+					res.body.should.have.property('status').eql('Failed');
+					res.body.should.have.property('message').eql('No order with the given id');
+					done();
+				});
+		});
+	
+		it('Should get a single order /orders/:orderId status code 200', (done) => {
+			const orderId = 3;
+			chai.request(router)
+				.get(`/api/v1/orders/${orderId}`)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('success');
+					res.body.should.have.property('Order').be.a('object');
+					done();
+				});
+		});
+	});
+  
 });
