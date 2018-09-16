@@ -1,8 +1,14 @@
 import Joi from 'joi';
 import orders from '../models/orders';
 
-export const getAllOrders = (req, res) => {
+export const  getAllOrders = (req, res) => {
 	res.status(200).json({ status: 'Success', Orders: orders });
+};
+
+export const fetchSingleOrder = (req, res) => {
+	const order = orders.find( o => o.id === parseInt(req.params.orderId));
+	if(!order) return res.status(404).json({ status: 'Failed', message: 'No order with the given id' });
+	res.status(200).json({ status: 'success', Order: order });
 };
 
 export const postOrder = (req, res) => {
@@ -27,6 +33,7 @@ export const postOrder = (req, res) => {
 };
 
 const validateOrders= (order) => {
+  
 	const schema = {
 		name: Joi.string().min(3).required(),
 		type: Joi.string().min(3).required(),
