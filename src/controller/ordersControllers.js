@@ -16,15 +16,6 @@ export const fetchSingleOrder = (req, res) => {
 export const postOrder = (req, res) => {
 	const { error } = validateOrders(req.body);
     
-	if(error) return res.status(400)
-		.json({ status: 'Failed to create order', message: error.details[0].message });
-	if(!order) return res.status(404).json({ status: 'Failed', message: 'No order with the given id' });
-	res.status(200).json({ status: 'success', Order: order });
-};
-
-export const postOrder = (req, res) => {
-	const { error } = validateOrders(req.body);
-    
 	if(error) return res.status(400).json({ status: 'Failed to create order', message: error.details[0].message });
 
 	const order = {
