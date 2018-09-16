@@ -7,7 +7,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 	{ 
 		id: 2, 
@@ -17,7 +18,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 	{ 
 		id: 3, 
@@ -27,7 +29,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 	{ 
 		id: 4, 
@@ -37,7 +40,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 	{ 
 		id: 5, 
@@ -47,7 +51,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 	{ 
 		id: 6, 
@@ -57,7 +62,8 @@ const orders = [
 		expires: 'Tuesday, May 11th 2016, 9:10am',
 		quantities: 4,
 		unitPrice: 200,
-		Total: '#800'
+		Total: '#800',
+		status: 'pending'
 	},
 ];
 
