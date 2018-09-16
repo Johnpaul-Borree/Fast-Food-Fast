@@ -32,7 +32,8 @@ export const postOrder = (req, res) => {
 	res.json({ justAdded: order, message: 'order Created' });
 };
 
-const validateOrders = (order) => {
+const validateOrders= (order) => {
+  
 	const schema = {
 		name: Joi.string().min(3).required(),
 		type: Joi.string().min(3).required(),
