@@ -20,3 +20,5 @@ router.put('/orders/:orderId', updateOrders);
 
 export default router;
 
+export default router;
+
