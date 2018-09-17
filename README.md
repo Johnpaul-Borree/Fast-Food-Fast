@@ -12,8 +12,8 @@ for now we pay on delivery.
 ## Getting Started
 - Install nodejs version 8.11.3
 - Clone this repository
-    $ git clone https://github.com/Johnpaul-Borree/Fast-Food-Fast.git
-    $cd Fast-Food-Fast
+    - $ git clone https://github.com/Johnpaul-Borree/Fast-Food-Fast.git
+    - $cd Fast-Food-Fast
 - Checkout to develop branch
 - run command npm install to install all dependencies in the package.json file
 - use npm run start_dev to start server for development
@@ -21,9 +21,9 @@ for now we pay on delivery.
 
 ## ENDPOINTS
 - get all orders -- GET /api/v1/orders
-- get a single order -- GET /api/v1/orders/<orderId>
+- get a single order -- GET /api/v1/orders/orderId
 - post order  -- POST /api/v1/orders
-- update order status PUT /api/v1/orders/<orderId>
+- update order status PUT /api/v1/orders/orderId
 
 ## Running the tests
 - npm run test
@@ -31,8 +31,8 @@ for now we pay on delivery.
 ## Deployment
 - create account on <a href="heroku.com">heroku</a> and signup with github
 - push required branch to heroku
-    $git push heroku <branch name>:master
-    see url from $heroku open
+    - $git push heroku <branch name>:master
+    - see url from $heroku open
 ### Required Features
 1. Users can create an account and log in
 2. A user should be able to order for food
