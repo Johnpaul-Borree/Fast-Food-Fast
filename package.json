@@ -7,8 +7,8 @@
     "start": "babel-node src/server",
     "start_dev": "nodemon --require babel-register src/server",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-register test/* --timeout=6000 --exit",
-    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register server/test/* --exit",
-    "coveralls": "npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls"
+    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register test/* --exit",
+    "coveralls": "npm run coverage && nyc report --reporter=lcov --reporter=text --reporter=lcovonly || coveralls"
   },
   "keywords": [
     "es6",
