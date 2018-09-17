@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Sofia');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #fdf9d0ec;
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.heading{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 10px 0;
+}
+.heading:before{
+    background: 
+        linear-gradient(-45deg, transparent 16px, #7ccbf3 0 ),
+        linear-gradient(45deg, transparent 16px, #7ccbf3 0 );
+        background-position: left bottom;
+        background-repeat: repeat-x;
+        background-size: 22px 100px;
+        content: "";
+        display: block;
+        min-height: 100px;
+        width: 100%;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        z-index: -1;
+        margin-top: -50px;
+
+}
+.heading > h2{
+    text-align: center;
+    font-weight: 600;
+    font-family: "Sofia", sans-serif;
+    font-size: 1.8em;
+    color: #333;
+}
+form{
+    width: 60%;
+    margin: 20vh auto;
+    margin-top: 10vh;
+    position: relative;
+    padding-bottom: 250px;
+    border-bottom: 1px solid #333;
+}
+.section{ 
+    position: relative; 
+    margin-bottom: 45px; 
+}
+input[type='text'], 
+input[type='password'],
+input[type='email'],
+input[type='tel']{
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    background: #fdf9d0ec;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+input:focus{ 
+    outline: none; 
+}
+.underline{ position:relative; display:block; width:300px; }
+.underline:before, .underline:after   {
+  content: "";
+  height: 2px; 
+  width: 0;
+  bottom: 1px; 
+  position: absolute;
+  background:#5264AE; 
+  transition: 0.3s ease all; 
+}
+.underline:before {
+  left: 50%;
+}
+.underline:after {
+  right:50%; 
+}
+input:focus ~ .underline:before, input:focus ~ .underline:after {
+  width:50%;
+}
+input[type='submit']{
+    width: 200px;
+    position: absolute;
+    left: 80%;
+    top: 80%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: "Lato" sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+input[type='submit']:hover { font-weight: 600; }
+input[type='submit']:focus { outline: none; }
+
+.instruct{
+    position: absolute;
+    left: 320px;
+    top: 0;
+    padding: 19px;
+    display: none;
+    width: 450px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #111;
+    background: #fdf9d0ec;
+    border: 1px solid #D5CEC8;
+    border-radius: 3px;
+    transition: 1s ease all;
+}
+.instruct:before, .instruct:after{
+    width: 0;
+    border: 10px solid transparent; 
+    content: ' ';
+    height: 0;
+    position: absolute;
+}
+.instruct:before{
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 7px solid rgba(0, 0, 0, 0);
+    border-top: 7px solid rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 10px;
+    left: -18px;
+    content: "";
+    display: inline-block;
+}
+.instruct:after{
+    content: "";
+    display: inline-block;
+    left: -16px;
+    position: absolute;
+    top: 11px;
+    border-bottom: 6px solid rgba(0, 0, 0, 0);
+    border-right: 6px solid #fff;
+    border-top: 6px solid rgba(0, 0, 0, 0);
+}
+.instruct.show{
+    display: block;
+}
+.instruct > .info > ul{
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+.instruct > .info > ul li{
+    padding: 2px 0 0 20px;
+}
+.instruct > .info > ul li.valid{
+    background-position: left -42px;
+    color: green;
+
+}
+.instruct > #password-status{
+    display: block;
+    height: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.4s ease;
+}
+.checks {
+    font-size: 16px;
+    font-style: italic;
+    text-align: left;
+    margin: 10px auto;
+    color: rgb(150,150,150);
+  }
+  
+  
+  .checks li.invalid {
+      color: #e74c3c;
+  }
+  .checks li.valid {
+      color: #2ecc71;
+  }
+  
+  .checks li.valid:after {
+      display: inline-block;
+      padding-left: 10px;
+      content: "\2713";
+  }
+.strength0 {
+    background: none; /* too short */
+    width: 0px;
+}
+.strength1 {
+    background: none repeat scroll 0 0 #ff4545;/* weak */
+    width: 20%;
+}
+.strength2 {
+    background: none repeat scroll 0 0 rgb(228, 32, 228);/* good */
+    width: 40%;
+}
+.strength3 {
+    background: none repeat scroll 0 0 #ffc824;/* strong */
+    width: 60%;
+}
+ 
+.strength4 {
+    background: none repeat scroll 0 0 #008000;/* best */
+    width: 80%;
+}
+#strength-status{
+    color: #999;
+}
+
+@media only screen and (max-width: 566px) {
+    .heading > h2 {
+        font-size: 1.2em;
+    }
+
+    input[type='submit'] {
+        left: 50%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .heading > h2 {
+        font-size: 1.2em;
+    }
+
+    input[type='text'], 
+    input[type='password'],
+    input[type='email'],
+    input[type='tel']{
+        font-size: 12px;
+        padding: 10px 10px 10px 5px;
+        width: 180px;
+    }
+
+    .underline {
+        width: 180px;
+      }
+
+    input[type='submit'] {
+        left: 50%;
+    }
+
+}
+
+.admin a {
+    text-decoration: none;
+    color: red;
+    font-size: 12px;
+}
