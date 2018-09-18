@@ -16,7 +16,8 @@ export const fetchSingleOrder = (req, res) => {
 export const postOrder = (req, res) => {
 	const { error } = validateOrders(req.body);
     
-	if(error) return res.status(400).json({ status: 'Failed to create order', message: error.details[0].message });
+	if(error) return res.status(400)
+		.json({ status: 'Failed to create order', message: error.details[0].message });
 
 	const order = {
 		id: orders.length + 1,
@@ -26,12 +27,26 @@ export const postOrder = (req, res) => {
 		expires: req.body.expires,
 		quantities: req.body.quantities,
 		unitPrice: Math.floor( Math.random() + 200),
-		total: 'N' + req.body.quantities * (Math.floor( Math.random() + 200))
+		total: 'N' + req.body.quantities * (Math.floor( Math.random() + 200)),
+		status: 'pending'
 	};
 
 	orders.push(order);
 
 	res.json({ justAdded: order, message: 'order Created' });
+};
+
+export const updateOrders = (req, res) => {
+	const order = orders.find( o => o.id === parseInt(req.params.orderId));
+	if(!order) return res.status(404)
+		.json({ status: 'Failed', message: 'No order with the given id' });
+
+	const { error } = validateStatus(req.body);
+	if(error) return res.status(400)
+		.json({ status: 'Failed to create order', message: error.details[0].message });
+
+	order.status = req.body.status;
+	res.status(200).json({ status: 'success', Order: order });
 };
 
 const validateOrders= (order) => {
@@ -44,5 +59,14 @@ const validateOrders= (order) => {
 	};
 
 	return Joi.validate(order, schema);
+    
+};
+
+const validateStatus = (orderStatus) => {
+	const schema = {
+		status: Joi.string().min(3).required()
+	};
+
+	return Joi.validate(orderStatus, schema);
     
 };
