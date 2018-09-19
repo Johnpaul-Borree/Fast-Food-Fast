@@ -474,6 +474,8 @@ h2.contact-us-title {
     color: #fff;
 }
 
+
+
 .footer .section-list .foothead {
     color: #fff;
     font-size: 13px;
@@ -481,42 +483,12 @@ h2.contact-us-title {
     font-weight: 700;
 }
 
-.footer .section-list ul {
-    padding-bottom: 20px;
-}
-
 .footer .section-list ul li {
     font-size: 18px;
-    padding-bottom: 10px;
 }
 
 .footer .section-list ul li a {
     color: #fff;
-}
-
-.footer .section-apps {
-    padding: 0 10px 30px;
-    color: white;
-}
-
-.footer .section-apps a {
-    display: inline-block;
-}
-
-.footer .section-apps .android,
-.footer .section-apps .apple {
-    background: url('../images/Available_on_the_App_Store_\(black\)_SVG.svg') no-repeat center center;
-    background-size: 100%;
-    width: 150px;
-    border-radius: 0;
-    height: 70px;
-    margin: 0 4px;
-    border: 0;
-}
-
-.footer .section-apps .android {
-    background: url('../images/google-play-download-android-app.svg') no-repeat center center;
-    background-size: 100%;
 }
 
 .footer .section-social {
