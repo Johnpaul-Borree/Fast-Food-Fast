@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 
-import router from '../src/server';
+import router from '../server';
 
 const should = chai.should();
 
@@ -16,7 +16,7 @@ describe('ORDERS', () =>{
 				expires: 'Dec 24th 2018, 10:00am',
 				quantities: 3,
 			};
-            
+
 			chai.request(router)
 				.post('/api/v1/orders')
 				.send(order)
@@ -29,7 +29,7 @@ describe('ORDERS', () =>{
 					done(err);
 				});
 		});
-        
+
 		it('should not create orders without required field(s) on /orders and return a status code of 400 with error message', (done) => {
 			const order = {
 				type: 'Breakfast',
@@ -37,7 +37,7 @@ describe('ORDERS', () =>{
 				expires: 'Dec 24th 2018, 10:00am',
 				quantities: 3,
 			};
-            
+
 			chai.request(router)
 				.post('/api/v1/orders')
 				.send(order)
@@ -47,10 +47,10 @@ describe('ORDERS', () =>{
 					res.body.should.have.property('status').eql('Failed to create order');
 					res.body.should.have.property('message').eql('"name" is required');
 					done(err);
-        
+
 				});
 		});
-        
+
 		it('should not create orders without correct number of field(s) on /orders and return a status code of 400 with error message', (done) => {
 			const order = {
 				type: 'Breakfast',
@@ -60,7 +60,7 @@ describe('ORDERS', () =>{
 				quantities: 3,
 				status: 'pending'
 			};
-            
+
 			chai.request(router)
 				.post('/api/v1/orders')
 				.send(order)
@@ -70,13 +70,13 @@ describe('ORDERS', () =>{
 					res.body.should.have.property('status').eql('Failed to create order');
 					res.body.should.have.property('message').eql('"expires" length must be at least 6 characters long');
 					done(err);
-        
+
 				});
 		});
-    
-        
-        
-       
+
+
+
+
 	});
 
 	describe('GET /orders', () => {
@@ -92,7 +92,7 @@ describe('ORDERS', () =>{
 				});
 		});
 	});
-  
+
 	describe('GEt /orders/:orderId', () => {
 		it('Should not get a order with id not equall to order id', (done) => {
 			const orderId = 300;
@@ -105,7 +105,7 @@ describe('ORDERS', () =>{
 					done();
 				});
 		});
-	
+
 		it('Should get a single order /orders/:orderId status code 200', (done) => {
 			const orderId = 3;
 			chai.request(router)
@@ -131,7 +131,7 @@ describe('ORDERS', () =>{
 					done();
 				});
 		});
-	
+
 		it('Should update a single order status /orders/:orderId status code 200', (done) => {
 			const orderId = 3;
 			chai.request(router)

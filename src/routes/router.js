@@ -4,7 +4,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-import { postOrder, getAllOrders, fetchSingleOrder, updateOrders } from '../controller/ordersControllers';
+import { postOrder, getAllOrders, fetchSingleOrder, updateOrders } from '../controllers/ordersControllers';
 
 //Post /api/v1/orders
 router.post('/orders', postOrder);

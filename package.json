@@ -4,11 +4,13 @@
   "description": "Fast-Food-Fast​ is a food delivery service app for a restaurant.\r ### Required Features\r 1. Users can create an account and log in\r 2. A user should be able to order for food\r 3. The admin should be able to add, edit or delete the fast-food items\r 4. The admin should be able to see a list of fast-food items\r 5. The admin user should be able to do the following:\r     - See a list of orders\r     - Accept and decline orders\r     - Mark orders as completed\r 6. A user should be able to see a history of ordered food",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node src/server",
+    "start": "npm run migration && babel-node src/server",
     "start_dev": "nodemon --require babel-register src/server",
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-register test/* --timeout=6000 --exit",
-    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register test/* --exit",
-    "coveralls": "npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls"
+    "migration": "node --require babel-register src/helpers/dbSchema/createTables",
+    "dropTables": "node --require babel-register src/helpers/dbSchema/dropTables",
+    "test": "npm run dropTables && nyc --reporter=html --reporter=text mocha --require babel-register src/test/* --timeout=6000 --exit",
+    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register src/test/* --exit",
+    "coveralls": "npm run dropTables && npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls"
   },
   "keywords": [
     "es6",
@@ -45,10 +47,12 @@
     "nyc": "^12.0.2"
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "joi": "^13.6.0",
     "istanbul": "^0.4.5",
-    "nodemon": "^1.18.4"
+    "joi": "^13.6.0",
+    "nodemon": "^1.18.4",
+    "pg": "^7.4.3"
   },
   "engines": {
     "node": "8.11.3"
