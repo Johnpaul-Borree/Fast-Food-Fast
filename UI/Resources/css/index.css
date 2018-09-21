@@ -501,7 +501,7 @@ h2.contact-us-title {
 }
 
 .footer .section-copyright {
-    font-size: 12px;
+    font-size: 16px;
     width: 700px;
     margin: 0 auto;
     padding-bottom: 30px;
@@ -511,14 +511,14 @@ h2.contact-us-title {
 
 .footer .section-copyright a {
     color: #fff;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 /* media Queries */
 
 @media only screen and (max-width: 800px) {
     .main-nav {
-        background: #402347;
+        background: #b19913;
         height: auto;
         transition: all 1s ease;
     }
@@ -729,7 +729,7 @@ h2.contact-us-title {
     }
 
     .footer .section-copyright {
-        font-size: 12px;
+        font-size: 14px;
         width: 700px;
         margin-left: -10%;
         padding-bottom: 30px;
