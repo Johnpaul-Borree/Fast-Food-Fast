@@ -93,6 +93,7 @@ body {
 }
 
 .navbar > .navbar-left {
+    margin-left: 8%;
     width: 60%;
     padding-top: 45px;
     padding-bottom: 20px;
@@ -566,6 +567,7 @@ h2.contact-us-title {
     }
 
     .navbar > .navbar-left {
+        margin: 0;
         width: 100%;
         padding-top: 5px;
         padding-bottom: 20px;
