@@ -4,7 +4,7 @@ import pool from '../helpers/connect';
 
 import router from '../server';
 
-const should = chai.should();
+chai.should();
 
 process.env.NODE_ENV = 'test';
 
@@ -17,6 +17,17 @@ describe('Users Authentication', () => {
 				done();
 			})
 			.catch(() => done());
+	});
+	describe('GET /', () => {
+		it('it should Show a welcome message', (done) =>{
+			chai.request(router)
+				.get('/')
+				.end((err, res) =>{
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					done();
+				});
+		});
 	});
 	describe('POST /auth/signup', () => {
 		it('It should signup user, and asign a token', (done) => {
@@ -93,6 +104,57 @@ describe('Users Authentication', () => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
 					res.body.should.have.property('message').eql('Password doesn\'t match');
+					res.body.should.have.property('status').eql('failed');
+					done();
+				});
+		});
+	});
+	describe('POST /auth/login', () => {
+		it('It should login user, and asign token', (done) => {
+			const user = {
+				email: 'myemail@gmail.com',
+				password: 'mypassword345',
+			};
+			chai.request(router)
+				.post('/api/v1/auth/login')
+				.send(user)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('success');
+					res.body.should.have.property('message').eql('You are logged in!');
+					res.body.should.have.property('token').be.a('string');
+					done();
+				});
+		});
+
+		it('It should not login user, email field missing', (done) => {
+			const user = {
+				password: 'mypassword345',
+			};
+			chai.request(router)
+				.post('/api/v1/auth/login')
+				.send(user)
+				.end((err, res) => {
+					res.should.have.status(400);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('failed');
+					res.body.should.have.property('message').eql('email is required');
+					done();
+				});
+		});
+		it('It should not login user, when password mismatch', (done) => {
+			const user = {
+				email: 'testpass@gmail.com',
+				password: 'mypassword',
+			};
+			chai.request(router)
+				.post('/api/v1/auth/login')
+				.send(user)
+				.end((err, res) => {
+					res.should.have.status(401);
+					res.body.should.be.a('object');
+					res.body.should.have.property('message').eql('invalid Email or Password');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
