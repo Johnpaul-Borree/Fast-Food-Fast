@@ -1,23 +1,7 @@
-import express from 'express';
-const router = express.Router();
+import userController from '../controllers/userController';
 
-router.use(express.json());
-router.use(express.urlencoded({ extended: true }));
-
-import { postOrder, getAllOrders, fetchSingleOrder, updateOrders } from '../controllers/ordersControllers';
-
-//Post /api/v1/orders
-router.post('/orders', postOrder);
-
-//GET /api/v1/orders
-router.get('/orders', getAllOrders);
-
-//GET /api/v1/orders/<orderId>
-router.get('/orders/:orderId', fetchSingleOrder);
-
-//PUT /api/v1/orders/<orderId>
-router.put('/orders/:orderId', updateOrders);
+const router = (app) => {
+	app.use('/api/v1/auth', userController);
+};
 
 export default router;
-
-
