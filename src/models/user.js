@@ -30,6 +30,27 @@ class User {
 			.catch(() => { throw new Error(); });
 	}
 
+	login() {
+		const query = {
+			text: 'SELECT * FROM users WHERE email = $1',
+			values: [this.email],
+		};
+
+		return this.pool.query(query)
+			.then((result) => {
+				// User not found in db
+				if (!result.rows[0]) return ({ code: 1, id: null });
+				// User found in db
+				const passwordMatch = bcrypt.compareSync(this.password, result.rows[0].hashed_password);
+				if (passwordMatch) {
+					return ({ code: 2, id: result.rows[0].id, admin: result.rows[0].is_admin });
+				}
+				return ({ code: 3, id: null });
+			})
+			.catch(err => err);
+	}
+
+
 	checkUserExistBefore(input) {
 		this.name = input.name;
 		this.email = input.email;
