@@ -40,6 +40,7 @@ router.post('/signup',(req, res) => {
       });
   } else {
     res.status(400).json({ status: 'failed', message: errors[0].message });
+<<<<<<< HEAD
   }
 });
 
@@ -72,6 +73,8 @@ router.post('/login', validator.login, (req, res) => {
       });
   } else {
     res.status(400).json({ status: 'failed', message: errors.array()[0].msg });
+=======
+>>>>>>> ch-mocha-test-signup-#160678440
   }
 });
 

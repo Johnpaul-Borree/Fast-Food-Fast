@@ -41,6 +41,7 @@ class User {
 			.catch(() => { throw new Error(); });
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	login() {
 		const query = {
@@ -64,12 +65,17 @@ class User {
 
 
 =======
+=======
+>>>>>>> ch-mocha-test-signup-#160678440
 	/**
    * Checks whether user email is already in the database
    * @method
 	 * @param  {string} input - object to store user details
 	 */
+<<<<<<< HEAD
 >>>>>>> ft-signup-#160634397
+=======
+>>>>>>> ch-mocha-test-signup-#160678440
 	checkUserExistBefore(input) {
 		this.name = input.name;
 		this.email = input.email;

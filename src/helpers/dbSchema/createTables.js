@@ -1,7 +1,11 @@
 import pool from '../connect';
 
 export default class CreateTableSchema {
+<<<<<<< HEAD
 	/**
+=======
+  /**
+>>>>>>> ch-mocha-test-signup-#160678440
  * Database schemma.
  * @constructor
  *
@@ -42,13 +46,21 @@ export default class CreateTableSchema {
         total float NOT NULL,
         PRIMARY KEY(product_number, order_id)
       )`;
-	}
+  }
 
+<<<<<<< HEAD
 	/**
+=======
+/**
+>>>>>>> ch-mocha-test-signup-#160678440
  * creates database tables.
  * @method
  *
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> ch-mocha-test-signup-#160678440
 	create() {
 		return this.pool.query(this.createUsersTable)
 			.then(() => this.pool.query(this.createProductsTable))

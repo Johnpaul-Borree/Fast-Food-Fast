@@ -11,16 +11,26 @@ const validator = {
 	trimSpaces: (input) => {
 		const validType = validator.requestsInput[input];
 		return validType ? validType.replace(/^\s+|\s+$/g, ''): '';
+<<<<<<< HEAD
   },
 
 /**
+=======
+	},
+
+	/**
+>>>>>>> ch-mocha-test-signup-#160678440
  * validates input values
  * @param  {object} req - object in req.body
  * @param  {string} inputs - main input from body
  */
 
 	validate: (req, inputs) => {
+<<<<<<< HEAD
     validator.errors = [];
+=======
+		validator.errors = [];
+>>>>>>> ch-mocha-test-signup-#160678440
 		Object.getOwnPropertyNames(validator).filter((name) => {
 			if (inputs.indexOf(name) !== -1) {
 				validator.requestsInput = req;
