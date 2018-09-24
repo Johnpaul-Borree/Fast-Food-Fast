@@ -213,7 +213,6 @@ describe('Users Authentication', () => {
 					res.should.have.status(401);
 					res.body.should.be.a('object');
 					res.body.should.have.property('message').eql('invalid Email or Password');
-					res.body.should.have.property('message').eql('Passwords doesn\'t match');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
