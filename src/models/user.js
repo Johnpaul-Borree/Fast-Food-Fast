@@ -18,7 +18,7 @@ class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
-	/**
+/**
  * Sign Up user to the database
  * @method
  * */
@@ -63,7 +63,6 @@ class User {
 			})
 			.catch(err => err);
 	}
-
 	/**
    * Checks whether user email is already in the database
    * @method

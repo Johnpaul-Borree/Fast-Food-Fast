@@ -11,15 +11,15 @@ const validator = {
 	trimSpaces: (input) => {
 		const validType = validator.requestsInput[input];
 		return validType ? validType.replace(/^\s+|\s+$/g, ''): '';
-	},
-	/**
+  },
+/**
  * validates input values
  * @param  {object} req - object in req.body
  * @param  {string} inputs - main input from body
  */
 
 	validate: (req, inputs) => {
-		validator.errors = [];
+    validator.errors = [];
 		Object.getOwnPropertyNames(validator).filter((name) => {
 			if (inputs.indexOf(name) !== -1) {
 				validator.requestsInput = req;

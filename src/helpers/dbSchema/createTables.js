@@ -41,7 +41,7 @@ export default class CreateTableSchema {
         quantity integer NOT NULL,
         PRIMARY KEY(product_number, order_id)
       )`;
-	}
+  }
 
 	/**
  * creates database tables.
