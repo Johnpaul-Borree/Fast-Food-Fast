@@ -1,4 +1,4 @@
-import pool from '../helpers';
+import pool from '../connect';
 
 export default class dropTableSchema {
 	/**

@@ -8,7 +8,7 @@
     "start_dev": "nodemon --require babel-register src/server",
     "migration": "node --require babel-register src/helpers/dbSchema/createTables",
     "dropTables": "node --require babel-register src/helpers/dbSchema/dropTables",
-    "test": "npm run dropTables && nyc --reporter=html --reporter=text mocha --require babel-register src/test/* --timeout=6000 --exit",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-register src/test/* --timeout=6000 --exit",
     "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register src/test/* --exit",
     "coveralls": "npm run dropTables && npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls"
   },
