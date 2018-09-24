@@ -36,8 +36,8 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -57,8 +57,8 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -77,8 +77,8 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -86,7 +86,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('name is required and should be a minimum of 3 characters');
+					res.body.should.have.property('message').eql('Enter a valid full Name');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
@@ -98,7 +98,7 @@ describe('Users Authentication', () => {
 				phoneNumber: '0903452',
 				confirmPhone: '0903452',
 				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -106,7 +106,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('Phone number should be a minimumof 11 characters');
+					res.body.should.have.property('message').eql('please enter a valid phone number');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
@@ -115,8 +115,8 @@ describe('Users Authentication', () => {
 			const user = {
 				name: 'udoka',
 				email: 'myemail@gmail.com',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -124,7 +124,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('Phone number should be a minimumof 11 characters');
+					res.body.should.have.property('message').eql('Phone number is required');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
@@ -135,7 +135,7 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345'
+				password: 'mypassword'
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -143,7 +143,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('Password doesn\'t match');
+					res.body.should.have.property('message').eql('Passwords doesn\'t match');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
@@ -153,7 +153,7 @@ describe('Users Authentication', () => {
 				name: 'udoka',
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034898976',
-				password: 'mypassword345'
+				password: 'mypassword'
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -171,7 +171,7 @@ describe('Users Authentication', () => {
 		it('It should login user, and asign token', (done) => {
 			const user = {
 				email: 'myemail@gmail.com',
-				password: 'mypassword345',
+				password: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/login')
@@ -188,7 +188,7 @@ describe('Users Authentication', () => {
 
 		it('It should not login user, email field missing', (done) => {
 			const user = {
-				password: 'mypassword345',
+				password: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/login')
@@ -197,7 +197,7 @@ describe('Users Authentication', () => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
 					res.body.should.have.property('status').eql('failed');
-					res.body.should.have.property('message').eql('email is required');
+					res.body.should.have.property('message').eql('Email is required');
 					done();
 				});
 		});
