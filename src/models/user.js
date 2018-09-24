@@ -40,42 +40,11 @@ class User {
 			})
 			.catch(() => { throw new Error(); });
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-	login() {
-		const query = {
-			text: 'SELECT * FROM users WHERE email = $1',
-			values: [this.email],
-		};
-
-		return this.pool.query(query)
-			.then((result) => {
-				// User not found in db
-				if (!result.rows[0]) return ({ code: 1, id: null });
-				// User found in db
-				const passwordMatch = bcrypt.compareSync(this.password, result.rows[0].hashed_password);
-				if (passwordMatch) {
-					return ({ code: 2, id: result.rows[0].id, admin: result.rows[0].is_admin });
-				}
-				return ({ code: 3, id: null });
-			})
-			.catch(err => err);
-	}
-
-
-=======
-=======
->>>>>>> ch-mocha-test-signup-#160678440
 	/**
    * Checks whether user email is already in the database
    * @method
 	 * @param  {string} input - object to store user details
 	 */
-<<<<<<< HEAD
->>>>>>> ft-signup-#160634397
-=======
->>>>>>> ch-mocha-test-signup-#160678440
 	checkUserExistBefore(input) {
 		this.name = input.name;
 		this.email = input.email;
