@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="UI/Resources/css/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="UI/Resources/css/form.css">
         <link rel="icon" type="image/png" href="UI/Resources/images/logo1.png">
     </head>
     <body>
@@ -28,14 +29,98 @@
                                 </a>
                             </li>
                         </div>
-                        <div class="navbar-right">
-                            <li class="nav-items"><a href="UI/login.html">Sign In</a></li>
-                            <li class="nav-items"><a href="UI/signup.html">Create Account</a></li>
+                        <div class="navbar-right js-signin-modal-trigger">
+                            <li class="nav-items"><a href="#0" data-signin="login">Sign In</a></li>
+                            <li class="nav-items"><a href="#0" data-signin="signup">Create Account</a></li>
                         </div>
                     </ul>
                 </div>
             </nav>
             <div class="content-container">
+                <div class="signin-modal js-signin-modal">
+                    <div class="signin-modal-container">
+                        <div class="signin-modal-block js-signin-modal-block" data-type="signup">
+                                <h2 class="greetme">Create Account</h2>
+                            <form action="#" class="signin-modal-form">
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_fullname signin-modal-label_image" for="signup-fullname">Full Name</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-fullname" type="text" placeholder="fullname" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_email signin-modal-label_image" for="signup-email">E-mail</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-email" type="email" placeholder="E-mail" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_phone signin-modal-label_image" for="signup-phone">Phone Number</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-phone" type="tel"  placeholder="Phone Number" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_phone signin-modal-label_image" for="signup-phone"> Confirm Phone Number</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-phone" type="tel"  placeholder="Re-Enter Phone Number" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signup-password">Password</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-password" type="password"  placeholder="Password" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signup-password"> Confirm Password</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-password" type="password"  placeholder="Confirm Password" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+                
+                                <p class="signin-modal-fieldset">
+                                    <input type="checkbox" id="accept-terms" class="signin-modal-input" required checked>
+                                    <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+                                </p>
+                
+                                <p class="signin-modal-fieldset">
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding" type="submit" value="Create account">
+                                </p>
+                            </form>
+                            <div class="signin-modal-switcher js-signin-modal-switcher js-signin-modal-trigger">
+                                <p>Already have an account? <a href="#0" data-signin="login" data-type="login">Login</a></p>
+                            </div>
+                        </div>
+                        <div class="signin-modal-block js-signin-modal-block" data-type="login">
+                            <h2 class="greetme">Welcome Back</h2>
+                            <form class="signin-modal-form">
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_email signin-modal-label_image" for="signin-email">E-mail</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-email" type="email" placeholder="E-mail" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+            
+                                <p class="signin-modal-fieldset">
+                                    <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signin-password">Password</label>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-password" type="password"  placeholder="Password" required>
+                                    <span class="signin-modal-error">Error message here!</span>
+                                </p>
+            
+                                <p class="signin-modal-fieldset">
+                                    <input type="checkbox" id="remember-me" checked class="signin-modal-input" required>
+                                    <label for="remember-me">Remember me</label>
+                                </p>
+            
+                                <p class="signin-modal-fieldset">
+                                    <input class="signin-modal-input signin-modal-input_full-width" type="submit" value="Login">
+                                </p>
+                            </form>
+
+                            <div class="signin-modal-switcher js-signin-modal-switcher js-signin-modal-trigger">
+                                <p>Don't have an account?<a href="#0" data-signin="signup" data-type="signup">Create Account</a></p>
+                            </div>
+                            
+                            <p class="signin-modal-bottom-message signin-modal-trigger"><a href="#0" data-signin="reset">Forgot your password?</a></p>
+                        </div>
+                        <a href="#0" class="signin-modal-close js-close">Close</a>
+                    </div>
+                </div> 
                 <div class="main-content">
                     <div class="bgimg">
                         <div class="wrapper">
