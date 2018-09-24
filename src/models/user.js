@@ -2,6 +2,15 @@ import bcrypt from 'bcrypt';
 import pool from '../helpers/connect';
 
 class User {
+/**
+ * Describes a user
+ * @constructor
+ * @param  {string} name - User Full Name
+ * @param  {string} email - User Email
+ * @param  {string} phoneNumber - User Phone Number
+ * @param  {string} password - User Password
+ */
+
 	constructor(name, email, phoneNumber, password) {
 		this.pool = pool;
 		this.name = name;
@@ -9,7 +18,10 @@ class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
-
+/**
+ * Sign Up user to the database
+ * @method
+ * */
 	signup() {
 		const hash = bcrypt.hashSync(this.password, 10);
 		const query = {
@@ -23,12 +35,12 @@ class User {
 			.then((result) => {
 				const userId = result.rows[0].id;
 				const admin = result.rows[0].is_admin;
-				// wrong input
 				if (!userId) throw new Error();
 				return { userId, admin };
 			})
 			.catch(() => { throw new Error(); });
 	}
+<<<<<<< HEAD
 
 	login() {
 		const query = {
@@ -51,6 +63,13 @@ class User {
 	}
 
 
+=======
+	/**
+   * Checks whether user email is already in the database
+   * @method
+	 * @param  {string} input - object to store user details
+	 */
+>>>>>>> ft-signup-#160634397
 	checkUserExistBefore(input) {
 		this.name = input.name;
 		this.email = input.email;
