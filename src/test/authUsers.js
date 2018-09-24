@@ -25,8 +25,8 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -46,8 +46,8 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -64,8 +64,8 @@ describe('Users Authentication', () => {
 			const user = {
 				name: 'udoka',
 				email: 'myemail@gmail.com',
-				password: 'mypassword345',
-				confirmPassword: 'mypassword345',
+				password: 'mypassword',
+				confirmPassword: 'mypassword',
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -73,7 +73,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('Phone number should be a minimumof 11 characters');
+					res.body.should.have.property('message').eql('Phone number is required');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});
@@ -84,7 +84,7 @@ describe('Users Authentication', () => {
 				email: 'myemail@gmail.com',
 				phoneNumber: '09034523487',
 				confirmPhone: '09034523487',
-				password: 'mypassword345'
+				password: 'mypassword'
 			};
 			chai.request(router)
 				.post('/api/v1/auth/signup')
@@ -92,7 +92,7 @@ describe('Users Authentication', () => {
 				.end((err, res) => {
 					res.should.have.status(400);
 					res.body.should.be.a('object');
-					res.body.should.have.property('message').eql('Password doesn\'t match');
+					res.body.should.have.property('message').eql('Passwords doesn\'t match');
 					res.body.should.have.property('status').eql('failed');
 					done();
 				});

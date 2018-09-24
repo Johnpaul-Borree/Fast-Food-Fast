@@ -1,6 +1,11 @@
 import pool from '../connect';
 
 export default class CreateTableSchema {
+	/**
+ * Database schemma.
+ * @constructor
+ *
+ */
 	constructor() {
 		this.pool = pool;
 		this.createUsersTable = `CREATE TABLE IF NOT EXISTS users(
@@ -39,7 +44,11 @@ export default class CreateTableSchema {
       )`;
 	}
 
-
+	/**
+ * creates database tables.
+ * @method
+ *
+ */
 	create() {
 		return this.pool.query(this.createUsersTable)
 			.then(() => this.pool.query(this.createProductsTable))
