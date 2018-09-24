@@ -42,7 +42,7 @@ export default class CreateTableSchema {
         total float NOT NULL,
         PRIMARY KEY(product_number, order_id)
       )`;
-	}
+  }
 
 	/**
  * creates database tables.

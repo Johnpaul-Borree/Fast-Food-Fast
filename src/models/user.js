@@ -2,14 +2,14 @@ import bcrypt from 'bcrypt';
 import pool from '../helpers/connect';
 
 class User {
-	/**
-   * Describes a user
-   * @constructor
-   * @param  {string} name - User Full Name
-   * @param  {string} email - User Email
-   * @param  {string} phoneNumber - User Phone Number
-   * @param  {string} password - User Password
-   */
+/**
+ * Describes a user
+ * @constructor
+ * @param  {string} name - User Full Name
+ * @param  {string} email - User Email
+ * @param  {string} phoneNumber - User Phone Number
+ * @param  {string} password - User Password
+ */
 
 	constructor(name, email, phoneNumber, password) {
 		this.pool = pool;
@@ -18,10 +18,10 @@ class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
-	/**
-   * Sign Up user to the database
-   * @method
-   * */
+/**
+ * Sign Up user to the database
+ * @method
+ * */
 	signup() {
 		const hash = bcrypt.hashSync(this.password, 10);
 		const query = {
@@ -63,8 +63,7 @@ class User {
 			})
 			.catch(err => err);
 	}
-
-
+  
 	/**
    * Checks whether user email is already in the database
    * @method
