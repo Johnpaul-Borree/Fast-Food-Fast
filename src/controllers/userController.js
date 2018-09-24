@@ -10,7 +10,7 @@ const router = express.Router();
 /**
  * Sign Up User
  */
-router.post('/signup', (req, res) => {
+router.post('/signup',(req, res) => {
   const errors = validator.validate(req.body, [
     'name','email', 'phoneNumber','confirmPhone', 'password', 'confirmPassword'
   ]);
@@ -43,9 +43,8 @@ router.post('/signup', (req, res) => {
   }
 });
 
-
 /**
- * Sign Up User
+ * Login User
  */
 router.post('/login', (req, res) => {
   const errors = validator.validate(req.body, [

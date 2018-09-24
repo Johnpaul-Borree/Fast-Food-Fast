@@ -12,7 +12,6 @@ const validator = {
 		const validType = validator.requestsInput[input];
 		return validType ? validType.replace(/^\s+|\s+$/g, ''): '';
 	},
-
 	/**
  * validates input values
  * @param  {object} req - object in req.body
