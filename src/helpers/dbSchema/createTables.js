@@ -39,7 +39,6 @@ export default class CreateTableSchema {
         product_number integer REFERENCES products(product_number) ON DELETE RESTRICT,
         order_id integer REFERENCES orders(id) ON DELETE CASCADE,
         quantity integer NOT NULL,
-        total float NOT NULL,
         PRIMARY KEY(product_number, order_id)
       )`;
   }

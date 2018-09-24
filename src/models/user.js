@@ -63,7 +63,6 @@ class User {
 			})
 			.catch(err => err);
 	}
-  
 	/**
    * Checks whether user email is already in the database
    * @method
