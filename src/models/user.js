@@ -2,14 +2,14 @@ import bcrypt from 'bcrypt';
 import pool from '../helpers/connect';
 
 class User {
-/**
- * Describes a user
- * @constructor
- * @param  {string} name - User Full Name
- * @param  {string} email - User Email
- * @param  {string} phoneNumber - User Phone Number
- * @param  {string} password - User Password
- */
+	/**
+   * Describes a user
+   * @constructor
+   * @param  {string} name - User Full Name
+   * @param  {string} email - User Email
+   * @param  {string} phoneNumber - User Phone Number
+   * @param  {string} password - User Password
+   */
 
 	constructor(name, email, phoneNumber, password) {
 		this.pool = pool;
@@ -18,17 +18,17 @@ class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
-/**
- * Sign Up user to the database
- * @method
- * */
+	/**
+   * Sign Up user to the database
+   * @method
+   * */
 	signup() {
 		const hash = bcrypt.hashSync(this.password, 10);
 		const query = {
 			text: `INSERT INTO users (
-        name, email, phone_number,
-        hashed_password
-        ) VALUES($1, $2, $3, $4) RETURNING id, is_admin`,
+          name, email, phone_number,
+          hashed_password
+          ) VALUES($1, $2, $3, $4) RETURNING id, is_admin`,
 			values: [this.name, this.email, this.phoneNumber, hash],
 		};
 		return this.pool.query(query)
@@ -40,6 +40,31 @@ class User {
 			})
 			.catch(() => { throw new Error(); });
 	}
+
+	/**
+   * Sign In user to the database
+   * @method
+   * */
+
+	login() {
+		const query = {
+			text: 'SELECT * FROM users WHERE email = $1',
+			values: [this.email],
+		};
+
+		return this.pool.query(query)
+			.then((result) => {
+				if (!result.rows[0]) return ({ code: 1, id: null });
+				const passwordMatch = bcrypt.compareSync(this.password, result.rows[0].hashed_password);
+				if (passwordMatch) {
+					return ({ code: 2, id: result.rows[0].id, admin: result.rows[0].is_admin });
+				}
+				return ({ code: 3, id: null });
+			})
+			.catch(err => err);
+	}
+
+
 	/**
    * Checks whether user email is already in the database
    * @method
