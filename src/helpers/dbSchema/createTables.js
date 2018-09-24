@@ -1,7 +1,7 @@
 import pool from '../connect';
 
 export default class CreateTableSchema {
-  /**
+	/**
  * Database schemma.
  * @constructor
  *
@@ -44,12 +44,11 @@ export default class CreateTableSchema {
       )`;
   }
 
-/**
+	/**
  * creates database tables.
  * @method
  *
  */
-
 	create() {
 		return this.pool.query(this.createUsersTable)
 			.then(() => this.pool.query(this.createProductsTable))
