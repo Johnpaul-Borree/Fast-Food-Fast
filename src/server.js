@@ -3,6 +3,7 @@ import express from 'express';
 import requestRoutes from './routes/router';
 
 dotenv.config();
+
 const app = express();
 
 app.use(express.json());
@@ -13,7 +14,7 @@ app.get('/', (req, res) => {
 	res.send('Welcome to Fast-Food-Fast');
 });
 
-app.use('/api/v1', requestRoutes);
+requestRoutes(app);
 
 const port = process.env.PORT || 3000;
 
