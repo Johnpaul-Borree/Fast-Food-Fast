@@ -83,6 +83,24 @@ describe('Food Menu', () => {
 					done();
 				});
 		});
+		it('It should not post item more than once', (done) => {
+			const menuItem = {
+				token: tokenObject1.token,
+				productName: 'myproduct',
+				description: 'This is a product designed by me',
+				price: '1050',
+			};
+			chai.request(router)
+				.post('/api/v1/menu')
+				.send(menuItem)
+				.end((err, res) => {
+					res.should.have.status(422);
+					res.body.should.be.a('object');
+					res.body.should.have.property('message').eql('item exist');
+					res.body.should.have.property('status').eql('failed');
+					done();
+				});
+		});
 		it('Should not post menu when user is not admin', (done) => {
 			const menuItem = {
 				token: tokenObject2.token,
@@ -106,6 +124,19 @@ describe('Food Menu', () => {
 					done();
 				})
 				.catch(() => done());
+		});
+	});
+	describe('/GET', () => {
+		it('should get all menu without token', (done) => {
+			chai.request(router)
+				.get('/api/v1/menu')
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('success');
+					res.body.should.have.property('menu').be.a('array');
+					done();
+				});
 		});
 	});
 });
