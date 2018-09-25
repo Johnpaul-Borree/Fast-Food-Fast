@@ -12,6 +12,7 @@ const verifyToken = (router) => {
 					return;
 				}
 				req.body.userId = decoded.userId;
+				req.body.admin  = decoded.admin;
 				next();
 			});
 		}
