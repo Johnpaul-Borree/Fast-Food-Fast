@@ -94,7 +94,7 @@ describe('Food Menu', () => {
 				.post('/api/v1/menu')
 				.send(menuItem)
 				.end((err, res) => {
-					res.should.have.status(422);
+					res.should.have.status(403);
 					res.body.should.be.a('object');
 					res.body.should.have.property('message').eql('item exist');
 					res.body.should.have.property('status').eql('failed');

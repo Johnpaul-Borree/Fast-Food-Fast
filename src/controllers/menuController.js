@@ -49,7 +49,7 @@ router.post('/menu', (req, res) => {
 							res.status(500).json({ status: 'failed', message: 'Problem adding menu' });
 						});
 				} else {
-					res.status(422).json({ status: 'failed', message: 'item exist', email: itemExist.productName });
+					res.status(403).json({ status: 'failed', message: 'item exist', email: itemExist.productName });
 				}
 			});
 	} else {
