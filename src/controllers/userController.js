@@ -20,8 +20,11 @@ router.post('/signup',(req, res) => {
       .then((emailExists) => {
         if (!emailExists) {
           user.signup()
-            .then((userId) => {
-              const payload = { userId };
+            .then((result) => {
+              const payload = {
+                userId: result.userId,
+                admin: result.admin,
+               };
               const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5hr' });
               res.status(200).json(
                 {
