@@ -32,14 +32,16 @@ export default class CreateTableSchema {
         address text NOT NULL,
         created_at timestamp DEFAULT NOW(),
         updated_at timestamp,
-        total float NOT NULL
+        total_price float NOT NULL,
+        status varchar(255) DEFAULT 'New'
       )`;
 
 		this.createOrderItemsTable = `CREATE TABLE IF NOT EXISTS order_items(
-        product_number integer REFERENCES products(product_number) ON DELETE RESTRICT,
+        order_items_id serial PRIMARY KEY NOT NULL,
         order_id integer REFERENCES orders(id) ON DELETE CASCADE,
+        item varchar(255) NOT NULL,
         quantity integer NOT NULL,
-        PRIMARY KEY(product_number, order_id)
+        price float NOT NULL
       )`;
 	}
 
