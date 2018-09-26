@@ -30,7 +30,34 @@ class Menu {
 			.catch(err => err);
 	}
 
+	/**
+   * Get menu from database
+   * @method
+   * */
 
+	getMenu() {
+		return this.pool.query('SELECT * from products')
+			.then(result => result)
+			.catch(err => err);
+	}
 
+ /**
+   * Checks whether menuItem is already in the database
+   * @method
+	 * @param  {string} input - object to store menu details
+	 */
+	checkItemExistBefore(input) {
+		this.productName = input.productName;
+		this.description = input.description;
+		this.price = input.price;
+		return this.pool.query('SELECT * FROM products WHERE name = $1', [input.productName])
+			.then((result) => {
+				if (result.rows[0]) {
+					return result.rows[0];
+				}
+				return false;
+			})
+			.catch(err => err);
+	}
 }
 export default Menu;
