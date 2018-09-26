@@ -75,6 +75,12 @@ class Orders {
 			.catch(err => err);
 	}
 
+
+	/**
+   * Get price of selected item to calculate total
+   * @method
+	 * @param  {float} item - the item to calculate price
+	 */
 	fetchPrice(item) {
 		return this.pool.query('SELECT price FROM products WHERE name = $1', [item])
 			.then((result) => {

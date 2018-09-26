@@ -40,7 +40,7 @@ router.post('/orders', (req, res) => {
 								});
 						}
 						else {
-							res.status(403).json({ status: 'failed', message: 'We do not have this item', item: req.body.item });
+							res.status(404).json({ status: 'failed', message: 'We do not have this item', item: req.body.item });
 						}
 					});
 			}
@@ -50,6 +50,7 @@ router.post('/orders', (req, res) => {
 		});
 
 });
+
 
 
 export default router;
