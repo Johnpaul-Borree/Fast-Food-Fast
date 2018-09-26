@@ -91,5 +91,27 @@ class Orders {
 			})
 			.catch(err => err);
 	}
+
+	/**
+   * Get My Order
+   */
+	getOrderByUserId(userId) {
+		return this.pool.query(`SELECT
+                            name, email, phone_number, orders.id,
+                            item, quantity, price, address,
+                            total_price, created_at, updated_at status
+                             FROM orders INNER JOIN users ON
+                             orders.user_id = users.id
+                             INNER JOIN order_items ON
+                             orders.id = order_items.order_id
+                             WHERE user_id = $1`, [userId])
+			.then((result) => {
+				if (result.rows) {
+					return result.rows;
+				}
+				return false;
+			})
+			.catch(err => err);
+	}
 }
 export default Orders;
