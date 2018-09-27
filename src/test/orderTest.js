@@ -3,37 +3,52 @@ import chaiHttp from 'chai-http';
 
 import router from '../server';
 
+
 chai.should();
 
 process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
 
+let token1, token2;
 describe('Create Order and get order', () => {
-	const tokenObject = {};
 	before((done) => {
-		const user = {
+		const user1 = {
 			email: 'judeman@gmail.com',
 			password: 'mypassword',
 		};
 		chai.request(router)
 			.post('/api/v1/auth/login')
-			.send(user)
+			.send(user1)
 			.end((err, res) => {
-				tokenObject.token = res.body.token;
+				token1 = res.body.token;
+				done();
+			});
+	});
+
+	before((done) => {
+		const user2 = {
+			email: 'ladipo@gmail.com',
+			password: 'mypassword',
+		};
+		chai.request(router)
+			.post('/api/v1/auth/login')
+			.send(user2)
+			.end((err, res) => {
+				token2 = res.body.token;
 				done();
 			});
 	});
 
 	describe('POST /order', () => {
 		it('should generate token', (done) => {
-			tokenObject.should.be.a('object');
-			tokenObject.should.have.property('token').not.eql('');
+			token1.should.be.a('string');
+			token2.should.be.a('string');
 			done();
 		});
 		it('It should post order and return status code of 200', (done) => {
 			const order = {
-				token: tokenObject.token,
+				token: token2,
 				'item': 'Bread',
 				'quantity': 3,
 				'price': 800.09,
@@ -70,8 +85,8 @@ describe('Create Order and get order', () => {
 	describe('/GET', () => {
 		it('should get user history', (done) => {
 			chai.request(router)
-				.get('/api/v1/users/3/orders')
-				.send({ token: tokenObject.token })
+				.get('/api/v1/users/4/orders')
+				.set('x-auth-token', token2)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -84,7 +99,7 @@ describe('Create Order and get order', () => {
 		it('should get all user history', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders')
-				.send({ token: tokenObject.token })
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -94,9 +109,10 @@ describe('Create Order and get order', () => {
 					done();
 				});
 		});
-		it('should not get all user if not admin', (done) => {
+		it('should not get all order if not admin', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders')
+				.send(token2)
 				.end((err, res) => {
 					res.should.have.status(403);
 					res.body.should.be.a('object');
@@ -107,7 +123,7 @@ describe('Create Order and get order', () => {
 		it('should get a single order by id', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders/3')
-				.send({ token: tokenObject.token })
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -120,7 +136,7 @@ describe('Create Order and get order', () => {
 		it('should not get a single order by unknown id', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders/34')
-				.send({ token: tokenObject.token })
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(404);
 					res.body.should.be.a('object');
@@ -133,12 +149,13 @@ describe('Create Order and get order', () => {
 	describe('/PUT', () => {
 		it('should update order status', (done) => {
 			const order = {
-				token: tokenObject.token,
+				token: token1,
 				status: 'processing'
 			};
 			chai.request(router)
 				.put('/api/v1/orders/8')
 				.send(order)
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -151,12 +168,13 @@ describe('Create Order and get order', () => {
 		});
 		it('should not update unknown id', (done) => {
 			const order = {
-				token: tokenObject.token,
+				token: token1,
 				status: 'processing'
 			};
 			chai.request(router)
 				.put('/api/v1/orders/34')
 				.send(order)
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(404);
 					res.body.should.be.a('object');
