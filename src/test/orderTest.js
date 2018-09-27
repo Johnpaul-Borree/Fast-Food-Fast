@@ -81,5 +81,28 @@ describe('Create Order and get order', () => {
 					done();
 				});
 		});
+		it('should get all user history', (done) => {
+			chai.request(router)
+				.get('/api/v1/orders')
+				.send({ token: tokenObject.token })
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('Success');
+					res.body.should.have.property('message').eql('Orders fetched successfully');
+					res.body.should.have.property('allOrders').be.a('array');
+					done();
+				});
+		});
+		it('should not get all user if not admin', (done) => {
+			chai.request(router)
+				.get('/api/v1/orders')
+				.end((err, res) => {
+					res.should.have.status(403);
+					res.body.should.be.a('object');
+					res.body.should.have.property('message').eql('No Token');
+					done();
+				});
+		});
 	});
 });
