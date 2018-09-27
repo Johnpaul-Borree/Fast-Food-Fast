@@ -26,6 +26,11 @@ describe('Create Order and get order', () => {
 	});
 
 	describe('POST /order', () => {
+		it('should generate token', (done) => {
+			tokenObject.should.be.a('object');
+			tokenObject.should.have.property('token').not.eql('');
+			done();
+		});
 		it('It should post order and return status code of 200', (done) => {
 			const order = {
 				token: tokenObject.token,
@@ -45,20 +50,35 @@ describe('Create Order and get order', () => {
 				});
 		});
 		it('Should not post order when token didn\'t match', (done) => {
-			const menuItem = {
+			const order = {
 				token: '56hhhi88090990-09jjhbbbtggbll*nbkj',
 				'item': 'Bread',
 				'quantity': 3,
 				'price': 800.09,
 			};
 			chai.request(router)
-				.post('/api/v1/menu')
-				.send(menuItem)
+				.post('/api/v1/orders')
+				.send(order)
 				.end((err, req) => {
 					req.should.have.status(401);
 					req.body.should.be.a('object');
 					req.body.should.have.property('message').eql('Failed to authenticate');
 					done(err);
+				});
+		});
+	});
+	describe('/GET', () => {
+		it('should get user history', (done) => {
+			chai.request(router)
+				.get('/api/v1/users/3/orders')
+				.send({ token: tokenObject.token })
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('Success');
+					res.body.should.have.property('message').eql('Orders fetched successfully');
+					res.body.should.have.property('userOrders').be.a('array');
+					done();
 				});
 		});
 	});
