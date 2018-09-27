@@ -130,4 +130,40 @@ describe('Create Order and get order', () => {
 				});
 		});
 	});
+	describe('/PUT', () => {
+		it('should update order status', (done) => {
+			const order = {
+				token: tokenObject.token,
+				status: 'processing'
+			};
+			chai.request(router)
+				.put('/api/v1/orders/8')
+				.send(order)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('Success');
+					res.body.should.have.property('message').eql('Order updated successfully');
+					res.body.should.have.property('justUpdated').be.a('object');
+					res.body.justUpdated.should.have.property('status').eql('processing');
+					done();
+				});
+		});
+		it('should not update unknown id', (done) => {
+			const order = {
+				token: tokenObject.token,
+				status: 'processing'
+			};
+			chai.request(router)
+				.put('/api/v1/orders/34')
+				.send(order)
+				.end((err, res) => {
+					res.should.have.status(404);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('failed');
+					res.body.should.have.property('message').eql('Order with the given Id was not found');
+					done();
+				});
+		});
+	});
 });
