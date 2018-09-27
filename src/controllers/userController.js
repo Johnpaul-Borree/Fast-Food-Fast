@@ -82,4 +82,28 @@ router.post('/login', (req, res) => {
   }
 });
 
+/**
+ * Create Admin user
+ */
+router.put('/admin', (req, res) =>{
+  const user = new User();
+  user.checkUserExistBefore(req.body)
+      .then((emailExists) => {
+        if (emailExists) {
+          user.createAdmin(req.body.email)
+          .then((result) => {
+            if(result.rows[0]) {
+              const newAdmin = result.rows[0];
+              res.status(200).json({  status: 'Success', message: 'New Admin Created', newAdmin });
+            }
+          })
+          .catch(() => {
+            res.status(500).json({ status: 'failed', message: 'Problem updating user' });
+          });
+        } else {
+          res.status(404).json({ status: 'failed', message: 'email not found' });
+        }
+      });
+});
+
 export default router;
