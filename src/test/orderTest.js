@@ -104,5 +104,30 @@ describe('Create Order and get order', () => {
 					done();
 				});
 		});
+		it('should get a single order by id', (done) => {
+			chai.request(router)
+				.get('/api/v1/orders/3')
+				.send({ token: tokenObject.token })
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('Success');
+					res.body.should.have.property('message').eql('Order fetched successfully');
+					res.body.should.have.property('singleOrder').be.a('object');
+					done();
+				});
+		});
+		it('should not get a single order by unknown id', (done) => {
+			chai.request(router)
+				.get('/api/v1/orders/34')
+				.send({ token: tokenObject.token })
+				.end((err, res) => {
+					res.should.have.status(404);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('failed');
+					res.body.should.have.property('message').eql('Order with the given Id was not found');
+					done();
+				});
+		});
 	});
 });
