@@ -159,5 +159,20 @@ class Orders {
 			})
 			.catch(err => err);
 	}
+
+	/**
+   * Admin update order status
+   * @method
+   * @param {string} status - Admin updates status
+   * @param {integer} oderId - Represent id of order
+    */
+	updateOrders(status, orderId) {
+		return this.pool.query(`UPDATE orders SET status = $1,
+                            updated_at = NOW()
+                            where id = $2 RETURNING *`
+		, [status, orderId])
+			.then(result => result)
+			.catch(err => err);
+	}
 }
 export default Orders;
