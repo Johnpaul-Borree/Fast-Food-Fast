@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 let token1, token2;
 describe('Food Menu', () => {
 	before((done) => {
-		pool.query(('DELETE from products where name = \'myproduct\''))
+		pool.query(('DELETE from products where name = \'Bread\''))
 			.then(() => {
 				done();
 			})
@@ -55,9 +55,9 @@ describe('Food Menu', () => {
 		it('It should add menu and return status code of 200', (done) => {
 			const menuItem = {
 				token: token1,
-				productName: 'myproduct',
-				description: 'This is a product designed by me',
-				price: '1050',
+				productName: 'Bread',
+				description: 'Delicious Bread',
+				price: '300',
 			};
 			chai.request(router)
 				.post('/api/v1/menu')
@@ -93,9 +93,9 @@ describe('Food Menu', () => {
 		it('It should not post item more than once', (done) => {
 			const menuItem = {
 				token: token1,
-				productName: 'myproduct',
-				description: 'This is a product designed by me',
-				price: '1050',
+				productName: 'Bread',
+				description: 'Delicious Bread',
+				price: '300',
 			};
 			chai.request(router)
 				.post('/api/v1/menu')
