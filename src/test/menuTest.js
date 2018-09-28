@@ -12,6 +12,13 @@ chai.use(chaiHttp);
 
 describe('Food Menu', () => {
 	before((done) => {
+		pool.query(('DELETE from products where name = \'myproduct\''))
+			.then(() => {
+				done();
+			})
+			.catch(err => err);
+	});
+	before((done) => {
 		const user1 = {
 			email: 'judeman@gmail.com',
 			password: 'mypassword',
@@ -118,16 +125,7 @@ describe('Food Menu', () => {
 					done(err);
 				});
 		});
-
-		after((done) => {
-			pool.query(('DELETE from products where name = \'myproduct\''))
-				.then(() => {
-					done();
-				})
-				.catch(err => err);
-		});
 	});
-
 	describe('/GET', () => {
 		it('should get all menu without token', (done) => {
 			chai.request(router)
