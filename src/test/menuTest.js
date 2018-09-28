@@ -7,9 +7,9 @@ import router from '../server';
 chai.should();
 
 process.env.NODE_ENV = 'test';
-let token1, token2;
-chai.use(chaiHttp);
 
+chai.use(chaiHttp);
+let token1, token2;
 describe('Food Menu', () => {
 	before((done) => {
 		pool.query(('DELETE from products where name = \'myproduct\''))
@@ -20,11 +20,15 @@ describe('Food Menu', () => {
 	});
 	before((done) => {
 		const user1 = {
+			name: 'jude',
 			email: 'judeman@gmail.com',
+			phoneNumber: '08129538948',
+			confirmPhone: '08129538948',
 			password: 'mypassword',
+			confirmPassword: 'mypassword',
 		};
 		chai.request(router)
-			.post('/api/v1/auth/login')
+			.post('/api/v1/auth/signup')
 			.send(user1)
 			.end((err, res) => {
 				token1 = res.body.token;
@@ -34,11 +38,15 @@ describe('Food Menu', () => {
 
 	before((done) => {
 		const user2 = {
+			name: 'chinweuba',
 			email: 'ladipo@gmail.com',
+			phoneNumber: '08287839234',
+			confirmPhone: '08287839234',
 			password: 'mypassword',
+			confirmPassword: 'mypassword',
 		};
 		chai.request(router)
-			.post('/api/v1/auth/login')
+			.post('/api/v1/auth/signup')
 			.send(user2)
 			.end((err, res) => {
 				token2 = res.body.token;
