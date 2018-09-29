@@ -56,6 +56,7 @@ describe('Create Order and get order', () => {
 			chai.request(router)
 				.post('/api/v1/orders')
 				.send(order)
+				.set('x-auth-token', token2)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -122,7 +123,7 @@ describe('Create Order and get order', () => {
 		});
 		it('should get a single order by id', (done) => {
 			chai.request(router)
-				.get('/api/v1/orders/3')
+				.get('/api/v1/orders/2')
 				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
@@ -153,7 +154,7 @@ describe('Create Order and get order', () => {
 				status: 'processing'
 			};
 			chai.request(router)
-				.put('/api/v1/orders/8')
+				.put('/api/v1/orders/2')
 				.send(order)
 				.set('x-auth-token', token1)
 				.end((err, res) => {
