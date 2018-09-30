@@ -72,6 +72,30 @@ router.get('/users/:userId/orders', (req, res) => {
 		});
 });
 
-
+/**
+ * Admin GET all orders
+ */
+router.get('/orders', (req, res) => {
+	order.userId = req.body.userId;
+	order.admin = req.body.admin;
+	if(order.admin) {
+		order.getAllOrders()
+			.then((result) => {
+				if(result){
+					const allOrders = result;
+					res.status(200).json({  status: 'Success', message: 'Orders fetched successfully', allOrders });
+				}
+				else {
+					res.status(404).json({ status: 'failed', message: 'No orders yet we are starting' });
+				}
+			})
+			.catch(() => {
+				res.status(500).json({ status: 'failed', message: 'Problem fetching orders' });
+			});
+	}
+	else {
+		res.status(401).json({ status: 'failed', message: 'access denied, contact admin' });
+	}
+});
 
 export default router;
