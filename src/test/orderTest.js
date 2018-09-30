@@ -74,7 +74,7 @@ describe('Create Order and get order', () => {
 				.send(order)
 				.set('x-auth-token', token2)
 				.end((err, res) => {
-					res.should.have.status(200);
+					res.should.have.status(403);
 					res.body.should.be.a('object');
 					res.body.should.have.property('status').eql('failed');
 					res.body.should.have.property('message').eql('order exist');
