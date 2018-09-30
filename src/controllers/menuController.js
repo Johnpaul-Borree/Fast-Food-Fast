@@ -42,7 +42,7 @@ router.post('/menu', (req, res) => {
 					})
 						.then((result) => {
 							const menuEntry = result.rows[0];
-							menuEntry.created_at = new Date(menuEntry.created_at).toDateString();
+							menuEntry.created_at = new Date(menuEntry.created_at).toLocaleString();
 							res.status(200).json({ status: 'success', message: 'Created', menuEntry });
 						})
 						.catch(() => {

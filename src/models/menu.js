@@ -12,7 +12,7 @@ class Menu {
 		this.description = null;
 		this.userId = null;
 		this.admin = false;
-		this.price = null;
+		this.price = 0;
 	}
 	/**
  * add menu to the database
