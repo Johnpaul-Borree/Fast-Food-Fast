@@ -48,7 +48,28 @@ router.post('/orders', (req, res) => {
 				res.status(403).json({ status: 'failed', message: 'order exist', order: orderExists.item });
 			}
 		});
+});
 
+/**
+ * Get a logged in user orders
+ */
+
+router.get('/users/:userId/orders', (req, res) => {
+	order.userId = req.body.userId;
+	req.params.userId = order.userId;
+	order.getOrderByUserId(order.userId)
+		.then((result) => {
+			if(result){
+				const userOrders = result;
+				res.status(200).json({  status: 'Success', message: 'Orders fetched successfully', userOrders });
+			}
+			else {
+				res.status(404).json({ status: 'failed', message: 'You have not made any order yet' });
+			}
+		})
+		.catch(() => {
+			res.status(500).json({ status: 'failed', message: 'Problem fetching order' });
+		});
 });
 
 
