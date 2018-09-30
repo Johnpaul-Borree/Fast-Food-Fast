@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-
 import router from '../server';
+
 
 chai.should();
 
@@ -9,38 +9,52 @@ process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
 
+let token1, token2;
 describe('Create Order and get order', () => {
-	const tokenObject = {};
 	before((done) => {
-		const user = {
+		const user1 = {
 			email: 'judeman@gmail.com',
 			password: 'mypassword',
 		};
 		chai.request(router)
 			.post('/api/v1/auth/login')
-			.send(user)
+			.send(user1)
 			.end((err, res) => {
-				tokenObject.token = res.body.token;
+				token1 = res.body.token;
+				done();
+			});
+	});
+
+	before((done) => {
+		const user2 = {
+			email: 'ladipo@gmail.com',
+			password: 'mypassword',
+		};
+		chai.request(router)
+			.post('/api/v1/auth/login')
+			.send(user2)
+			.end((err, res) => {
+				token2 = res.body.token;
 				done();
 			});
 	});
 
 	describe('POST /order', () => {
 		it('should generate token', (done) => {
-			tokenObject.should.be.a('object');
-			tokenObject.should.have.property('token').not.eql('');
+			token1.should.be.a('string');
+			token2.should.be.a('string');
 			done();
 		});
 		it('It should post order and return status code of 200', (done) => {
 			const order = {
-				token: tokenObject.token,
-				'item': 'Bread',
-				'quantity': 3,
-				'price': 800.09,
+				token: token2,
+				'item': 'Yam and Sauce',
+				'quantity': 4,
 			};
 			chai.request(router)
 				.post('/api/v1/orders')
 				.send(order)
+				.set('x-auth-token', token2)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -49,12 +63,48 @@ describe('Create Order and get order', () => {
 					done(err);
 				});
 		});
+		it('It should not post order more than once', (done) => {
+			const order = {
+				token: token2,
+				'item': 'Bread',
+				'quantity': 4,
+			};
+			chai.request(router)
+				.post('/api/v1/orders')
+				.send(order)
+				.set('x-auth-token', token2)
+				.end((err, res) => {
+					res.should.have.status(403);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('failed');
+					res.body.should.have.property('message').eql('order exist');
+					done(err);
+				});
+		});
+		it('It should not post order when item is not on database', (done) => {
+			const order = {
+				token: token2,
+				'item': 'Quili Quili',
+				'quantity': 4,
+			};
+			chai.request(router)
+				.post('/api/v1/orders')
+				.send(order)
+				.set('x-auth-token', token2)
+				.end((err, res) => {
+					res.should.have.status(404);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('failed');
+					res.body.should.have.property('message').eql('We do not have this item');
+					res.body.should.have.property('item').eql('Quili Quili');
+					done(err);
+				});
+		});
 		it('Should not post order when token didn\'t match', (done) => {
 			const order = {
 				token: '56hhhi88090990-09jjhbbbtggbll*nbkj',
 				'item': 'Bread',
 				'quantity': 3,
-				'price': 800.09,
 			};
 			chai.request(router)
 				.post('/api/v1/orders')
@@ -70,8 +120,8 @@ describe('Create Order and get order', () => {
 	describe('/GET', () => {
 		it('should get user history', (done) => {
 			chai.request(router)
-				.get('/api/v1/users/3/orders')
-				.send({ token: tokenObject.token })
+				.get('/api/v1/users/4/orders')
+				.set('x-auth-token', token2)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -84,7 +134,7 @@ describe('Create Order and get order', () => {
 		it('should get all user history', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders')
-				.send({ token: tokenObject.token })
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -94,9 +144,10 @@ describe('Create Order and get order', () => {
 					done();
 				});
 		});
-		it('should not get all user if not admin', (done) => {
+		it('should not get all order if not admin', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders')
+				.send(token2)
 				.end((err, res) => {
 					res.should.have.status(403);
 					res.body.should.be.a('object');
@@ -106,8 +157,8 @@ describe('Create Order and get order', () => {
 		});
 		it('should get a single order by id', (done) => {
 			chai.request(router)
-				.get('/api/v1/orders/3')
-				.send({ token: tokenObject.token })
+				.get('/api/v1/orders/2')
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -120,7 +171,7 @@ describe('Create Order and get order', () => {
 		it('should not get a single order by unknown id', (done) => {
 			chai.request(router)
 				.get('/api/v1/orders/34')
-				.send({ token: tokenObject.token })
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(404);
 					res.body.should.be.a('object');
@@ -133,35 +184,55 @@ describe('Create Order and get order', () => {
 	describe('/PUT', () => {
 		it('should update order status', (done) => {
 			const order = {
-				token: tokenObject.token,
-				status: 'processing'
+				token: token1,
+				status: 'Processing'
 			};
 			chai.request(router)
-				.put('/api/v1/orders/8')
+				.put('/api/v1/orders/2')
 				.send(order)
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
 					res.body.should.have.property('status').eql('Success');
 					res.body.should.have.property('message').eql('Order updated successfully');
 					res.body.should.have.property('justUpdated').be.a('object');
-					res.body.justUpdated.should.have.property('status').eql('processing');
+					res.body.justUpdated.should.have.property('status').eql('Processing');
 					done();
 				});
 		});
 		it('should not update unknown id', (done) => {
 			const order = {
-				token: tokenObject.token,
-				status: 'processing'
+				token: token1,
+				status: 'Processing'
 			};
 			chai.request(router)
 				.put('/api/v1/orders/34')
 				.send(order)
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(404);
 					res.body.should.be.a('object');
 					res.body.should.have.property('status').eql('failed');
 					res.body.should.have.property('message').eql('Order with the given Id was not found');
+					done();
+				});
+		});
+		it('should not update with un recognized update message', (done) => {
+			const order = {
+				token: token1,
+				status: 'Rubbish'
+			};
+			chai.request(router)
+				.put('/api/v1/orders/2')
+				.send(order)
+				.set('x-auth-token', token1)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('Success but Failed on Update message');
+					res.body.should.have.property('message').eql('message should be any of ');
+					res.body.should.have.property('adminStatus').to.be.a('array');
 					done();
 				});
 		});

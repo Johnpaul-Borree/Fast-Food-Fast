@@ -132,20 +132,25 @@ router.put('/orders/:orderId', (req, res) => {
 	order.userId = req.body.userId;
 	order.admin = req.body.admin;
 	if(order.admin) {
-		order.updateOrders(req.body.status, req.params.orderId)
-			.then((result) => {
-				if(result.rows[0]){
-					const justUpdated = result.rows[0];
-					justUpdated.updated_at = new Date().toLocaleString();
-					res.status(200).json({  status: 'Success', message: 'Order updated successfully', justUpdated });
-				}
-				else {
-					res.status(404).json({ status: 'failed', message: 'Order with the given Id was not found' });
-				}
-			})
-			.catch(() => {
-				res.status(500).json({ status: 'failed', message: 'Problem updating order' });
-			});
+		const adminStatus = ['New', 'Processing', 'Cancelled', 'Complete'];
+		if(adminStatus.indexOf(req.body.status) !== -1) {
+			order.updateOrders(req.body.status, req.params.orderId)
+				.then((result) => {
+					if(result.rows[0]){
+						const justUpdated = result.rows[0];
+						justUpdated.updated_at = new Date().toLocaleString();
+						res.status(200).json({  status: 'Success', message: 'Order updated successfully', justUpdated });
+					}
+					else {
+						res.status(404).json({ status: 'failed', message: 'Order with the given Id was not found' });
+					}
+				})
+				.catch(() => {
+					res.status(500).json({ status: 'failed', message: 'Problem updating order' });
+				});
+		} else {
+			res.status(200).json({  status: 'Success but Failed on Update message', message: 'message should be any of ', adminStatus });
+		}
 	}
 	else {
 		res.status(401).json({ status: 'failed', message: 'access denied, contact admin' });

@@ -9,40 +9,88 @@ chai.should();
 process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
-
+let token1, token2;
 describe('Food Menu', () => {
-	const tokenObject1 = {};
-	const tokenObject2 = {};
 	before((done) => {
-		const user = {
+		pool.query(('DELETE from products where name = \'Bread\''))
+			.then(() => {
+				done();
+			})
+			.catch(err => err);
+	});
+	before((done) => {
+		pool.query(('DELETE from products where name = \'Yam and Sauce\''))
+			.then(() => {
+				done();
+			})
+			.catch(err => err);
+	});
+	before((done) => {
+		const user1 = {
 			email: 'judeman@gmail.com',
 			password: 'mypassword',
 		};
 		chai.request(router)
 			.post('/api/v1/auth/login')
-			.send(user)
+			.send(user1)
 			.end((err, res) => {
-				tokenObject1.token = res.body.token;
+				token1 = res.body.token;
+				done();
+			});
+	});
+
+	before((done) => {
+		const user2 = {
+			email: 'ladipo@gmail.com',
+			password: 'mypassword',
+		};
+		chai.request(router)
+			.post('/api/v1/auth/login')
+			.send(user2)
+			.end((err, res) => {
+				token2 = res.body.token;
 				done();
 			});
 	});
 
 	describe('POST /menu', () => {
 		it('should generate token', (done) => {
-			tokenObject1.should.be.a('object');
-			tokenObject1.should.have.property('token').not.eql('');
+			token1.should.be.a('string');
+			token2.should.be.a('string');
 			done();
 		});
 		it('It should add menu and return status code of 200', (done) => {
 			const menuItem = {
-				token: tokenObject1.token,
-				productName: 'myproduct',
-				description: 'This is a product designed by me',
-				price: '1050',
+				token: token1,
+				productName: 'Bread',
+				description: 'Delicious Bread',
+				price: '300',
 			};
 			chai.request(router)
 				.post('/api/v1/menu')
 				.send(menuItem)
+				.set('x-auth-token', token1)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('success');
+					res.body.should.have.property('menuEntry').be.a('object');
+					res.body.menuEntry.should.have.property('created_at').not.eql('');
+					res.body.should.have.property('message').eql('Created');
+					done(err);
+				});
+		});
+		it('It should add more items to menu and return status code of 200', (done) => {
+			const menuItem = {
+				token: token1,
+				productName: 'Yam and Sauce',
+				description: 'Delicious meal',
+				price: '600',
+			};
+			chai.request(router)
+				.post('/api/v1/menu')
+				.send(menuItem)
+				.set('x-auth-token', token1)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
@@ -70,25 +118,12 @@ describe('Food Menu', () => {
 					done(err);
 				});
 		});
-		before((done) => {
-			const user = {
-				email: 'ladipo@gmail.com',
-				password: 'mypassword',
-			};
-			chai.request(router)
-				.post('/api/v1/auth/login')
-				.send(user)
-				.end((err, res) => {
-					tokenObject2.token = res.body.token;
-					done();
-				});
-		});
 		it('It should not post item more than once', (done) => {
 			const menuItem = {
-				token: tokenObject1.token,
-				productName: 'myproduct',
-				description: 'This is a product designed by me',
-				price: '1050',
+				token: token1,
+				productName: 'Bread',
+				description: 'Delicious Bread',
+				price: '300',
 			};
 			chai.request(router)
 				.post('/api/v1/menu')
@@ -103,7 +138,7 @@ describe('Food Menu', () => {
 		});
 		it('Should not post menu when user is not admin', (done) => {
 			const menuItem = {
-				token: tokenObject2.token,
+				token: token2,
 				productName: 'myproduct',
 				description: 'This is a product designed by me',
 				price: '1050',
@@ -117,13 +152,6 @@ describe('Food Menu', () => {
 					req.body.should.have.property('message').eql('access denied, contact admin');
 					done(err);
 				});
-		});
-		after((done) => {
-			pool.query(('DELETE from products where name = \'myproduct\''))
-				.then(() => {
-					done();
-				})
-				.catch(() => done());
 		});
 	});
 	describe('/GET', () => {

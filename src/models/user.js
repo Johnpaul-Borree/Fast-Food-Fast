@@ -82,5 +82,11 @@ class User {
 			})
 			.catch(err => err);
 	}
+
+	createAdmin(input){
+		return this.pool.query('UPDATE users SET is_admin = $1 WHERE email = $2 RETURNING name, email, is_admin', [true, input])
+			.then(result => result)
+			.catch(err => err);
+	}
 }
 export default User;
