@@ -19,6 +19,13 @@ describe('Food Menu', () => {
 			.catch(err => err);
 	});
 	before((done) => {
+		pool.query(('DELETE from products where name = \'Yam and Sauce\''))
+			.then(() => {
+				done();
+			})
+			.catch(err => err);
+	});
+	before((done) => {
 		const user1 = {
 			email: 'judeman@gmail.com',
 			password: 'mypassword',
@@ -58,6 +65,27 @@ describe('Food Menu', () => {
 				productName: 'Bread',
 				description: 'Delicious Bread',
 				price: '300',
+			};
+			chai.request(router)
+				.post('/api/v1/menu')
+				.send(menuItem)
+				.set('x-auth-token', token1)
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('status').eql('success');
+					res.body.should.have.property('menuEntry').be.a('object');
+					res.body.menuEntry.should.have.property('created_at').not.eql('');
+					res.body.should.have.property('message').eql('Created');
+					done(err);
+				});
+		});
+		it('It should add more items to menu and return status code of 200', (done) => {
+			const menuItem = {
+				token: token1,
+				productName: 'Yam and Sauce',
+				description: 'Delicious meal',
+				price: '600',
 			};
 			chai.request(router)
 				.post('/api/v1/menu')
