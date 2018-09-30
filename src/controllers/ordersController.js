@@ -98,4 +98,30 @@ router.get('/orders', (req, res) => {
 	}
 });
 
+/**
+ * Admin GET specific order
+ */
+router.get('/orders/:orderId', (req, res) => {
+	order.userId = req.body.userId;
+	order.admin = req.body.admin;
+	if(order.admin) {
+		order.getSpecificOrder(req.params.orderId)
+			.then((result) => {
+				if(result){
+					const singleOrder = result;
+					res.status(200).json({  status: 'Success', message: 'Order fetched successfully', singleOrder });
+				}
+				else {
+					res.status(404).json({ status: 'failed', message: 'Order with the given Id was not found' });
+				}
+			})
+			.catch(() => {
+				res.status(500).json({ status: 'failed', message: 'Problem fetching order' });
+			});
+	}
+	else {
+		res.status(401).json({ status: 'failed', message: 'access denied, contact admin' });
+	}
+});
+
 export default router;

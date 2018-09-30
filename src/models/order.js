@@ -135,5 +135,29 @@ class Orders {
 			})
 			.catch(err => err);
 	}
+
+	/**
+   * Admin get single order
+   * @method
+   * @param {integer} orderId - integer id for connection url
+   */
+	getSpecificOrder(orderId) {
+		return this.pool.query(`SELECT
+                            name, email, phone_number, orders.id,
+                            item, quantity, price, address,
+                            total_price, created_at, updated_at, status
+                             FROM orders INNER JOIN users ON
+                             orders.user_id = users.id
+                             INNER JOIN order_items ON
+                             orders.id = order_items.order_id
+                             WHERE orders.id = $1`, [orderId])
+			.then((result) => {
+				if (result.rows[0]) {
+					return result.rows[0];
+				}
+				return false;
+			})
+			.catch(err => err);
+	}
 }
 export default Orders;
