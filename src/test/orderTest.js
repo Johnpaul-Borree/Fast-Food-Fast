@@ -1,7 +1,5 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-
-import pool from '../helpers/connect';
 import router from '../server';
 
 
@@ -13,13 +11,6 @@ chai.use(chaiHttp);
 
 let token1, token2;
 describe('Create Order and get order', () => {
-	before((done) => {
-		pool.query(('DELETE from orders where status =\'New\''))
-			.then(() => {
-				done();
-			})
-			.catch(err => err);
-	});
 	before((done) => {
 		const user1 = {
 			email: 'judeman@gmail.com',
@@ -206,7 +197,7 @@ describe('Create Order and get order', () => {
 					res.body.should.have.property('status').eql('Success');
 					res.body.should.have.property('message').eql('Order updated successfully');
 					res.body.should.have.property('justUpdated').be.a('object');
-					res.body.justUpdated.should.have.property('status').eql('processing');
+					res.body.justUpdated.should.have.property('status').eql('Processing');
 					done();
 				});
 		});
@@ -240,7 +231,7 @@ describe('Create Order and get order', () => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
 					res.body.should.have.property('status').eql('Success but Failed on Update message');
-					res.body.should.have.property('message').eql('message should be any of');
+					res.body.should.have.property('message').eql('message should be any of ');
 					res.body.should.have.property('adminStatus').to.be.a('array');
 					done();
 				});
