@@ -66,7 +66,7 @@ describe('Create Order and get order', () => {
 		it('It should not post order more than once', (done) => {
 			const order = {
 				token: token2,
-				'item': 'Yam and Sauce',
+				'item': 'Bread',
 				'quantity': 4,
 			};
 			chai.request(router)
