@@ -55,7 +55,10 @@
     "joi": "^13.6.0",
     "jsonwebtoken": "^8.3.0",
     "nodemon": "^1.18.4",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "swagger-ui": "^3.19.1",
+    "swagger-ui-dist": "^3.19.1",
+    "swagger-ui-express": "^4.0.1"
   },
   "engines": {
     "node": "8.11.3"
