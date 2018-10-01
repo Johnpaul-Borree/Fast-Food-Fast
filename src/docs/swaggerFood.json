@@ -178,7 +178,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Auto generated using Swagger Inspector",
+            "description" : "Order Created successfully",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
@@ -189,7 +189,7 @@
             }
           },
           "404" : {
-            "description" : "Auto generated using Swagger Inspector",
+            "description" : "Requested item not found",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
