@@ -12,42 +12,43 @@ verifyToken(router);
  */
 router.post('/orders', (req, res) => {
 	order.userId = req.body.userId;
-	order.checkOrderExistBefore({
+	// order.checkOrderExistBefore({
+	// 	userId: order.userId,
+	// 	orderId: order.orderId
+	// })
+	// 	.then((orderExists) => {
+	// 		if(!orderExists) {
+	// order.fetchPrice(req.body.item)
+	// 	.then((itemFound) => {
+	// 		if(itemFound){
+	// 			const price = itemFound.price;
+	order.postOrder ({
 		userId: order.userId,
-		item: req.body.item
-	})
-		.then((orderExists) => {
-			if(!orderExists) {
-				order.fetchPrice(req.body.item)
-					.then((itemFound) => {
-						if(itemFound){
-							const price = itemFound.price;
-							order.postOrder ({
-								userId: order.userId,
-								address: req.body.address,
-								quantity: req.body.quantity,
-								price: price,
-								total: req.body.quantity * price,
-								item: req.body.item
-							})
-								.then((result) => {
-									if(result) {
-										res.status(200).json({  status: 'Success', message: 'Order created successfully' });
-									}
-								})
-								.catch(() => {
-									res.status(500).json({ status: 'failed', message: 'Problem adding order' });
-								});
-						}
-						else {
-							res.status(404).json({ status: 'failed', message: 'We do not have this item', item: req.body.item });
-						}
-					});
+		address: req.body.address,
+		// quantity: req.body.quantity,
+		// price: price,
+		total: order.calculateTotal(req.body.items),
+		// item: req.body.item
+	}, req.body.items)
+		.then((result) => {
+			if(result) {
+        console.log(result)
+				res.status(200).json({  status: 'Success', message: 'Order created successfully' });
 			}
-			else {
-				res.status(403).json({ status: 'failed', message: 'order exist', order: orderExists.item });
-			}
+		})
+		.catch(() => {
+			res.status(500).json({ status: 'failed', message: 'Problem adding order' });
 		});
+	// 	}
+	// 	else {
+	// 		res.status(404).json({ status: 'failed', message: 'We do not have this item', item: req.body.item });
+	// 	}
+	// });
+	// 	}
+	// 	else {
+	// 		res.status(403).json({ status: 'failed', message: 'order exist', order: orderExists.item });
+	// 	}
+	// });
 });
 
 /**
@@ -132,25 +133,20 @@ router.put('/orders/:orderId', (req, res) => {
 	order.userId = req.body.userId;
 	order.admin = req.body.admin;
 	if(order.admin) {
-		const adminStatus = ['New', 'Processing', 'Cancelled', 'Complete'];
-		if(adminStatus.indexOf(req.body.status) !== -1) {
-			order.updateOrders(req.body.status, req.params.orderId)
-				.then((result) => {
-					if(result.rows[0]){
-						const justUpdated = result.rows[0];
-						justUpdated.updated_at = new Date().toLocaleString();
-						res.status(200).json({  status: 'Success', message: 'Order updated successfully', justUpdated });
-					}
-					else {
-						res.status(404).json({ status: 'failed', message: 'Order with the given Id was not found' });
-					}
-				})
-				.catch(() => {
-					res.status(500).json({ status: 'failed', message: 'Problem updating order' });
-				});
-		} else {
-			res.status(200).json({  status: 'Success but Failed on Update message', message: 'message should be any of ', adminStatus });
-		}
+		order.updateOrders(req.body.status, req.params.orderId)
+			.then((result) => {
+				if(result.rows[0]){
+					const justUpdated = result.rows[0];
+					justUpdated.updated_at = new Date().toLocaleString();
+					res.status(200).json({  status: 'Success', message: 'Order updated successfully', justUpdated });
+				}
+				else {
+					res.status(404).json({ status: 'failed', message: 'Order with the given Id was not found' });
+				}
+			})
+			.catch(() => {
+				res.status(500).json({ status: 'failed', message: 'Problem updating order' });
+			});
 	}
 	else {
 		res.status(401).json({ status: 'failed', message: 'access denied, contact admin' });
