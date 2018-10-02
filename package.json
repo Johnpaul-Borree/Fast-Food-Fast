@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-validator": "^5.2.0",
@@ -55,7 +56,10 @@
     "joi": "^13.6.0",
     "jsonwebtoken": "^8.3.0",
     "nodemon": "^1.18.4",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "swagger-ui": "^3.19.1",
+    "swagger-ui-dist": "^3.19.1",
+    "swagger-ui-express": "^4.0.1"
   },
   "engines": {
     "node": "8.11.3"

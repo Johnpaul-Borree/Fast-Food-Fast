@@ -1,0 +1,541 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Fast Food Fast",
+    "description" : "This is a sample API documentation for a Fast Food Application known as fast food fast. This was designed to satisfy the requirements of the Andela bootcamp Challenges.",
+    "contact" : {
+      "email" : "bohrplus@gmail.com"
+    },
+    "version" : "0.1"
+  },
+  "servers" : [ {
+    "url" : "https://fast-food-fast-johnpaul.herokuapp.com"
+  } ],
+  "tags" : [ {
+    "name" : "food",
+    "description" : "All you need to buy food"
+  }, {
+    "name" : "menu",
+    "description" : "make a choice of meal from menu"
+  }, {
+    "name" : "admin",
+    "description" : "Administrator functions"
+  }, {
+    "name" : "user",
+    "description" : "Operations about user"
+  } ],
+  "paths" : {
+    "/api/v1/menu" : {
+      "get" : {
+        "tags" : [ "menu" ],
+        "summary" : "Get food menu",
+        "operationId" : "getmenu",
+        "responses" : {
+          "200" : {
+            "description" : "Succesful public route"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admin" ],
+        "summary" : "Add food to menu",
+        "operationId" : "addmenu",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImFkbWluIjp0cnVlLCJpYXQiOjE1MzgzMjA5MjgsImV4cCI6MTUzODMzODkyOH0.EGAoh-pGxvGU7Zn6Kogov_FrKuKJJT3ICXQIEoQMn6w"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"productName\": \"Potatoes and Sauce\",\n\t\"description\": \"Delicious meal\",\n\t\"price\": 800\n\n    \n}"
+                },
+                "1" : {
+                  "value" : "{\n    \"productName\": \"Potatoes and Sauce\",\n\t\"description\": \"Delicious meal\",\n\t\"price\": 800\n\n    \n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Items added to menu successfully",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Invalid login details for admin",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Not permited to add Food to menu contact admin",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/orders" : {
+      "get" : {
+        "tags" : [ "admin" ],
+        "summary" : "Get all food orders",
+        "operationId" : "getAllOrder",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImFkbWluIjpmYWxzZSwiaWF0IjoxNTM4MzIxMDc1LCJleHAiOjE1MzgzMzkwNzV9.GzKxCk759RcCAQCKjjRj2K5HpOMZ8JD36ZINh9eauiQ"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Order created successfully"
+          },
+          "401" : {
+            "description" : "Invalid Login Details not admin",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "food" ],
+        "summary" : "post orders",
+        "operationId" : "placeOrder",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImFkbWluIjp0cnVlLCJpYXQiOjE1MzgzNDU3MjUsImV4cCI6MTUzODM2MzcyNX0.J_yItHxeAn-sEhZyUJQG97TxGO0Cs8hEW2fpTv1vSiA"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \n\t\"item\": \"jollof rice and chicken\",\n\t\"quantity\": 3,\n\t\"address\": \"Plot 65 Ilupeju Ikorodu Road Lagos \"\n\n}"
+                },
+                "1" : {
+                  "value" : "{\n    \n\t\"item\": \"Yam and Sauce\",\n\t\"quantity\": 3,\n\t\"address\": \"Plot 65 Ilupeju Ikorodu Road Lagos \"\n\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Order Created successfully",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Requested item not found",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/users/3/orders" : {
+      "get" : {
+        "tags" : [ "food" ],
+        "summary" : "Get a particular users order history",
+        "operationId" : "getMyOrder",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImFkbWluIjpmYWxzZSwiaWF0IjoxNTM4MzIxMzg2LCJleHAiOjE1MzgzMzkzODZ9.kAr_f-WD8ztNJ0NdaO4PMjPMM4yXX72LtodnjAKnYXk"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful retrived orders",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/auth/signup" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Create user",
+        "operationId" : "createUser",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_2"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"name\": \"Luke\",\n    \"email\": \"luke@gmail.com\",\n    \"phoneNumber\": \"09087645378\",\n    \"confirmPhone\": \"09087645378\",\n    \"password\": \"mypassword\",\n    \"confirmPassword\": \"mypassword\"\n}"
+                },
+                "1" : {
+                  "value" : "{\n    \"name\": \"Luke\",\n    \"email\": \"luke@gmail.com\",\n    \"phoneNumber\": \"09087645378\",\n    \"confirmPhone\": \"09087645378\",\n    \"password\": \"mypassword\",\n    \"confirmPassword\": \"mypassword\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful Sign up",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "422" : {
+            "description" : "Invalid Input during signup",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/admin/" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Creates an admin user",
+        "description" : "This can only be done by authorized admin",
+        "operationId" : "createAdmin",
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs user into the system",
+        "operationId" : "loginUser",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_3"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"email\": \"luke@gmail.com\",\n    \"password\": \"mypassword\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Login Successful",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Invalid Login Details",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/logout" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs out current logged in user session",
+        "operationId" : "logoutUser",
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/orders/3" : {
+      "get" : {
+        "tags" : [ "admin" ],
+        "summary" : "Get an order by Id",
+        "operationId" : "getOrderById",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImFkbWluIjp0cnVlLCJpYXQiOjE1MzgzMjExNjAsImV4cCI6MTUzODMzOTE2MH0.l0iYs839Dxw6HFcEIOLpc4rkrqWNeKXHUKO354a5dto"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Order retrived Successfully",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Failed to get orders, not an admin",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admin" ],
+        "summary" : "Update Order Status",
+        "operationId" : "getOrderById",
+        "parameters" : [ {
+          "name" : "x-auth-token",
+          "in" : "header",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImFkbWluIjp0cnVlLCJpYXQiOjE1MzgzMjE1MjksImV4cCI6MTUzODMzOTUyOX0.O1VK7xgP6rh2aiZo_nnZeHzVUG40hKgyEalIlU2BI5w"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_4"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"status\": \"Pending\"\n\n    \n}"
+                },
+                "1" : {
+                  "value" : "{\n    \"status\": \"Funny\"\n\n    \n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "body_3" : {
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_4" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "item" : {
+            "type" : "string"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "address" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_2" : {
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          },
+          "confirmPhone" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "confirmPassword" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "price" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "productName" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "oauth2" : {
+        "type" : "oauth2",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "http://yourauthurl.com",
+            "scopes" : {
+              "scope_name" : "Enter your scopes here"
+            }
+          }
+        }
+      }
+    }
+  }
+}
