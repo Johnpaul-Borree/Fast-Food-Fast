@@ -57,6 +57,7 @@
     "jsonwebtoken": "^8.3.0",
     "nodemon": "^1.18.4",
     "pg": "^7.4.3",
+    "pg-format": "^1.0.4",
     "swagger-ui": "^3.19.1",
     "swagger-ui-dist": "^3.19.1",
     "swagger-ui-express": "^4.0.1"
