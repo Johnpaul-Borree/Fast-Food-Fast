@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat|Rubik');
 
 * {
@@ -8,7 +9,7 @@
 li {
     margin-bottom: 0.25em;
 }
- ul { 
+ ul {
      list-style: none;
 }
 a {
@@ -93,6 +94,7 @@ body {
 }
 
 .navbar > .navbar-left {
+    margin-left: 8%;
     width: 60%;
     padding-top: 45px;
     padding-bottom: 20px;
@@ -474,6 +476,8 @@ h2.contact-us-title {
     color: #fff;
 }
 
+
+
 .footer .section-list .foothead {
     color: #fff;
     font-size: 13px;
@@ -481,42 +485,12 @@ h2.contact-us-title {
     font-weight: 700;
 }
 
-.footer .section-list ul {
-    padding-bottom: 20px;
-}
-
 .footer .section-list ul li {
     font-size: 18px;
-    padding-bottom: 10px;
 }
 
 .footer .section-list ul li a {
     color: #fff;
-}
-
-.footer .section-apps {
-    padding: 0 10px 30px;
-    color: white;
-}
-
-.footer .section-apps a {
-    display: inline-block;
-}
-
-.footer .section-apps .android,
-.footer .section-apps .apple {
-    background: url('../images/Available_on_the_App_Store_\(black\)_SVG.svg') no-repeat center center;
-    background-size: 100%;
-    width: 150px;
-    border-radius: 0;
-    height: 70px;
-    margin: 0 4px;
-    border: 0;
-}
-
-.footer .section-apps .android {
-    background: url('../images/google-play-download-android-app.svg') no-repeat center center;
-    background-size: 100%;
 }
 
 .footer .section-social {
@@ -529,7 +503,7 @@ h2.contact-us-title {
 }
 
 .footer .section-copyright {
-    font-size: 12px;
+    font-size: 16px;
     width: 700px;
     margin: 0 auto;
     padding-bottom: 30px;
@@ -539,14 +513,14 @@ h2.contact-us-title {
 
 .footer .section-copyright a {
     color: #fff;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 /* media Queries */
 
 @media only screen and (max-width: 800px) {
     .main-nav {
-        background: #402347;
+        background: #b19913;
         height: auto;
         transition: all 1s ease;
     }
@@ -568,7 +542,7 @@ h2.contact-us-title {
 
     .main-nav > .logoz  img {
         height: 80px;
-    }    
+    }
 
     .main-nav > .menu-toggle {
         position: absolute;
@@ -583,17 +557,18 @@ h2.contact-us-title {
         height: auto;
         transition: all 1s ease;
     }
-    
+
     .wrapper > ul[data-mode=close] {
         display: none;
     }
-    
+
     .wrapper > ul[data-mode=open] {
         display: inherit;
         transition: all 1s ease;
     }
 
     .navbar > .navbar-left {
+        margin: 0;
         width: 100%;
         padding-top: 5px;
         padding-bottom: 20px;
@@ -602,17 +577,17 @@ h2.contact-us-title {
         transition: all 1s ease;
 
     }
-    
+
     .navbar > .navbar-logoholder {
         display: none;
         transition: all 1s ease;
     }
-    
+
     .navbar > .navbar-logoholder img {
         display: none;
         transition: all 1s ease;
     }
-    
+
     .navbar > .navbar-right {
         width: 100%;
         padding-top: 0;
@@ -621,60 +596,60 @@ h2.contact-us-title {
         flex-flow: column wrap;
         transition: all 1s ease;
     }
-    
+
     .navbar li {
         font-size: 14px;
         font-weight: 500;
         text-align: left;
     }
-    
+
     .navbar li a {
         color: #fff;
     }
-    
+
     .main-content .bgimg > .wrapper {
         max-width: 700px;
         padding: 0 10px;
     }
-    
+
     .wrapper > .content-food {
         width: 100%;
         padding-bottom: 6em;
         padding-top: 4em;
         padding-left: 10px;
     }
-    
+
     .wrapper > .content-food h1 {
         font-size: 50px;
         line-height: 0.9em;
         color: #4d4d4d;
     }
-    
+
     .wrapper > .content-food p {
         line-height: 1.1em;
         color: rgba(19, 29, 13, 0.836);
         font-weight: 500;
     }
-    
+
     .wrapper-about > .wrapper {
         max-width: 700px;
         padding: 0 10px;
     }
-    
+
     .content.about-us .group-left {
         min-height: 290px;
         width: 14%;
         margin-left: 33%;
         margin-bottom: 30px;
     }
-    
+
     .content.about-us h4 {
         display: block;
         font-size: 16px;
         margin-top: 80px;
         color: #333333;
     }
-    
+
     .about-us .group-right {
         padding-right: 0;
         width: 40%;
@@ -682,18 +657,18 @@ h2.contact-us-title {
         margin-left: 20px;
         margin-right: 40px;
     }
-    
+
     .services-wrapper .services {
         max-width: 700px;
     }
-    
+
     h2.service-title {
         font-size: 1.2rem;
         line-height: 1.4rem;
         padding-bottom: 25px;
         padding-top: 33px;
     }
-    
+
     .food-wrap {
         text-align: left;
         display: flex;
@@ -704,7 +679,7 @@ h2.contact-us-title {
         justify-content: center;
         margin-left: 0px;
     }
-    
+
     .food-wrap .items {
         border: 2px solid #ccc;
         flex-basis: 25%;
@@ -713,7 +688,7 @@ h2.contact-us-title {
         flex-flow: column wrap;
         margin: 10px;
     }
-    
+
     .food-wrap .items .item-image {
         width: 100%;
         background-color: #d2d2d2;
@@ -723,7 +698,7 @@ h2.contact-us-title {
         overflow-y: hidden;
         padding-bottom: 56.25%;
     }
-    
+
     .food-wrap .item-body {
         border-top: 1px solid #e5e5e5;
         width: 100%;
@@ -731,7 +706,7 @@ h2.contact-us-title {
         text-align: center;
         overflow: hidden;
     }
-    
+
     .food-wrap .item-body h3.title {
         padding: 10px;
         display: block;
@@ -745,7 +720,7 @@ h2.contact-us-title {
         width: 100%;
         text-align: left;
     }
-    
+
     .item-body p {
         font-size: 12px;
         color: #131313;
@@ -757,7 +732,7 @@ h2.contact-us-title {
     }
 
     .footer .section-copyright {
-        font-size: 12px;
+        font-size: 14px;
         width: 700px;
         margin-left: -10%;
         padding-bottom: 30px;
@@ -777,13 +752,13 @@ h2.contact-us-title {
         padding-top: 8em;
         padding-left: 16px;
     }
-    
+
     .wrapper > .content-food h1 {
         font-size: 50px;
         line-height: 1.1em;
         color: #4d4d4d;
     }
-    
+
     .wrapper > .content-food p {
         line-height: 1.1em;
         color: rgb(32, 48, 21);
@@ -793,21 +768,21 @@ h2.contact-us-title {
         max-width: 940px;
         padding: 0 15px;
     }
-    
+
     .content.about-us .group-left {
         min-height: 290px;
         width: 16%;
         margin-left: 25%;
         margin-bottom: 30px;
     }
-    
+
     .content.about-us h4 {
         display: block;
         font-size: 16px;
         margin-top: 80px;
         color: #333333;
     }
-    
+
     .about-us .group-right {
         padding-right: 0;
         width: 50%;
@@ -823,12 +798,12 @@ h2.contact-us-title {
         width: 16%;
         margin-left: 25%;
     }
-    
+
     .content.about-us h4 {
         font-size: 18px;
         margin-top: 80px;
     }
-    
+
     .about-us .group-right {
         padding-right: 0;
         width: 50%;
@@ -870,12 +845,12 @@ h2.contact-us-title {
         width: 13%;
         margin-left: 40%;
     }
-    
+
     .content.about-us h4 {
         font-size: 12px;
         margin-top: 80px;
     }
-    
+
     .about-us .group-right {
         padding-right: 0;
         width: 30%;
@@ -917,13 +892,13 @@ h2.contact-us-title {
     .wrapper > .content-food {
         padding-top: 10em;
     }
-    
+
     .wrapper > .content-food h1 {
         font-size: 40px;
         line-height: 1em;
         color: #fff;
     }
-    
+
     .wrapper > .content-food p {
         line-height: 1em;
         color: #fff;
@@ -947,13 +922,13 @@ h2.contact-us-title {
         padding-top: 30px;
         display: block;
     }
-    
-    
+
+
     .content.about-us h4 {
         font-size: 12px;
         margin-top: 80px;
     }
-    
+
     .about-us .group-right {
         padding-right: 0;
         width: 80%;
