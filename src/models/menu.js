@@ -41,7 +41,7 @@ class Menu {
 			.catch(err => err);
 	}
 
- /**
+	/**
    * Checks whether menuItem is already in the database
    * @method
 	 * @param  {string} input - object to store menu details
