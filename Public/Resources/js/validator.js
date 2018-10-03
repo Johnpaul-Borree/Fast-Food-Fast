@@ -274,11 +274,10 @@ confirmPassword.Validation = new Validation(confirmPassword);
 confirmPassword.Validation.validInput = confirmPasswordValidation;
 
 
-const inputs = document.querySelectorAll('input:not([type="submit"])');
+const inputs = document.querySelectorAll('.signup-input');
 
 
 const submit = document.querySelector('input[type="submit"');
-const signin = document.querySelectorAll('.signin-modal-form');
 
 function validate() {
 	for (let i = 0; i < inputs.length; i++) {
@@ -304,15 +303,4 @@ password.addEventListener('blur',()=>{
 
 submit.addEventListener('click', validate);
 
-function redirect() {
-	window.location = 'UI/order.html';
-}
-
-for (let i = 0; i < signin.length; i++) {
-	signin[i].addEventListener('submit', function(evt){
-		evt.preventDefault();
-    validate();
-    redirect();
-	});
-}
 

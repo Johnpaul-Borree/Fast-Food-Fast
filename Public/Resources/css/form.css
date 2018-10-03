@@ -68,7 +68,21 @@ a {
     font-weight: 600;
     color: #333;
 }
-
+.signin-modal-block > .error {
+  position: fixed;
+  top: 7%;
+  left: 10px;
+  color: #ff4545;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  visibility: hidden;
+}
+.signin-modal-block > .error.visible {
+  visibility: visible;
+}
   @media only screen and (min-width: 600px) {
 
     .signin-modal-container {
@@ -178,7 +192,8 @@ a {
   .instruct{
     padding: 19px;
     display: none;
-    width: 450px;
+    margin-left:3%;
+    width: 80%;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: #111;

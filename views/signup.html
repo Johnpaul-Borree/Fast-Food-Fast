@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="Resources/css/form.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="Resources/images/logo1.png">
+
+    </head>
+    <body>
+        <div class="heading">
+            <h2>Enter Your Details and Order Food Today </h2>
+        </div>
+        <form id="Signup-form" class="signin-form">
+            <div class="section">
+                <input type="text" id="fname" name="firstname" placeholder="First Name" required tabindex="1">
+                <span class="underline"></span>
+            </div>
+            <div class="section">
+                <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+                <span class="underline"></span>
+            </div>
+            <div class="section">
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <span class="underline"></span>
+            </div>
+            <div class="section">
+                <input type="password" id="password" name="password" required placeholder="Enter Password">
+                <span class="underline"></span>
+                <div class="instruct" id="require">
+                    <div class="password-message"></div>
+                    <div id="password-status" class="strength0"></div>
+                    <div id="strength-status">password is empty </div>
+                    <div class="info">
+                    <strong>Password Tips:</strong>
+                    <ul class="checks">
+                        <li>Password must contain at least 6 characters.</li>
+                        <li>Password must be at most 12 characters</li>
+                        <li>Password must have at least 1 of [a - z]</li>
+                        <li>Password must have at least 1 of [A - Z]</li>
+                        <li>Password must have at least 1 of [0 - 9]</li>
+                        <li>Password must have at least 1 of [$@#&!]</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <input type="password" id="con-password" name="cpassword" required placeholder="Confirm Password">
+                <span class="underline"></span>
+            </div>
+            <div class="section">
+                    <input type="tel" id="phone-no" name="phone-no" required placeholder="Mobile Number">
+                    <span class="underline"></span>
+            </div>
+            <div class="section">
+                    <input type="tel" id="con-phone-no" name="con-phone-no" required placeholder="Re-enter Phone Number">
+                    <span class="underline"></span>
+            </div>
+            <input type="submit" class="button" name="submit" id="submit" tabindex="5" value="Create Account">
+        </form>
+    <script src="Resources/js/script.js"></script>
+    </body>
+</html>
