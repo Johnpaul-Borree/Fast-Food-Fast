@@ -175,41 +175,90 @@ a {
     outline: none;
   }
 
-  .signin-modal-error {
-    display: inline-block;
-    position: absolute;
-    left: -5px;
-    bottom: -35px;
-    background: rgba(215, 102, 102, 0.9);
-    padding: .8em;
-    z-index: 2;
-    color: #FFF;
-    font-size: 1.3rem;
-    border-radius: 0.25em;
-    pointer-events: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s 0s, visibility 0s 0.2s;
+  .instruct{
+    padding: 19px;
+    display: none;
+    width: 450px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #111;
+    background: #fdf9d0ec;
+    border: 1px solid #D5CEC8;
+    border-radius: 3px;
+    transition: 1s ease all;
+}
+
+.instruct.show{
+    display: block;
+}
+.instruct > .info > ul{
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+.instruct > .info > ul li{
+    padding: 2px 0 0 20px;
+}
+.instruct > .info > ul li.valid{
+    background-position: left -42px;
+    color: green;
+
+}
+.instruct > #password-status{
+    display: block;
+    height: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.4s ease;
+}
+.checks {
+    font-size: 16px;
+    font-style: italic;
+    text-align: left;
+    margin: 10px auto;
+    color: rgb(150,150,150);
   }
 
-  .signin-modal-error::after {
-    /* triangle */
-    content: '';
-    position: absolute;
-    left: 22px;
-    bottom: 100%;
-    height: 0;
-    width: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid rgba(215, 102, 102, 0.9);
+
+  .checks li.invalid {
+      color: #e74c3c;
+  }
+  .checks li.valid {
+      color: #2ecc71;
   }
 
-  .signin-modal-error.signin-modal-error--is-visible {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s 0s, visibility 0s 0s;
+  .checks li.valid:after {
+      display: inline-block;
+      padding-left: 10px;
+      content: "\2713";
   }
+.strength0 {
+    background: none;
+    width: 0px;
+}
+.strength1 {
+    background: none repeat scroll 0 0 #ff4545;
+    width: 20%;
+}
+.strength2 {
+    background: none repeat scroll 0 0 rgb(228, 32, 228);
+    width: 40%;
+}
+.strength3 {
+    background: none repeat scroll 0 0 #ffc824;
+    width: 60%;
+}
+
+.strength4 {
+    background: none repeat scroll 0 0 #008000;
+    width: 80%;
+}
+#strength-status{
+    color: #999;
+}
 
   @media only screen and (min-width: 600px) {
     .signin-modal-form {

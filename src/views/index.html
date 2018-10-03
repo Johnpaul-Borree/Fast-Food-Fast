@@ -4,17 +4,17 @@
         <title>Fast Food Fast</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="views/Resources/css/index.css" rel="stylesheet">
-        <link rel="stylesheet" href="views/Resources/css/form.css">
-        <link rel="icon" type="image/png" href="views/Resources/images/logo1.png">
+        <link href="Resources/css/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="Resources/css/form.css">
+        <link rel="icon" type="image/png" href="Resources/images/logo1.png">
     </head>
     <body>
         <div class="container">
             <nav class="main-nav">
                     <div class="logoz">
-                        <a href="index.html"><img src="views/Resources/images/logo.png" alt="logo"></a>
+                        <a href="index.html"><img src="Resources/images/logo.png" alt="logo"></a>
                     </div>
-                    <img src="views/Resources/images/icon-menu.svg" alt="menu" class="menu-toggle">
+                    <img src="Resources/images/icon-menu.svg" alt="menu" class="menu-toggle">
                 <div class="wrapper">
                     <ul class="navbar" data-mode="close">
                         <div class="navbar-left">
@@ -25,7 +25,7 @@
                         <div class="navbar-logoholder">
                             <li class="nav-items logo">
                                 <a href="index.html">
-                                    <img src="views/Resources/images/logo.png" alt="logo">
+                                    <img src="Resources/images/logo.png" alt="logo">
                                 </a>
                             </li>
                         </div>
@@ -44,38 +44,52 @@
                             <form action="#" class="signin-modal-form">
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_fullname signin-modal-label_image" for="signup-fullname">Full Name</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-fullname" type="text" placeholder="fullname" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-fullname" type="text" placeholder="fullname" required>
+
                                 </p>
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_email signin-modal-label_image" for="signup-email">E-mail</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-email" type="email" placeholder="E-mail" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-email" type="email" placeholder="E-mail" required>
+
                                 </p>
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_phone signin-modal-label_image" for="signup-phone">Phone Number</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-phone" type="tel"  placeholder="Phone Number" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-phone" type="tel"  placeholder="Phone Number" required>
+
                                 </p>
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_phone signin-modal-label_image" for="signup-phone"> Confirm Phone Number</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-phone" type="tel"  placeholder="Re-Enter Phone Number" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-phone" type="tel"  placeholder="Re-Enter Phone Number" required>
+
                                 </p>
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signup-password">Password</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-password" type="password"  placeholder="Password" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-password" type="password"  placeholder="Password" required>
+                                    <div class="instruct" id="require">
+                                    <div class="password-message"></div>
+                                    <div id="password-status" class="strength0"></div>
+                                    <div id="strength-status">password is empty </div>
+                                    <div class="info">
+                                    <strong>Password Tips:</strong>
+                                    <ul class="checks">
+                                        <li>Password must contain at least 6 characters.</li>
+                                        <li>Password must be at most 12 characters</li>
+                                        <li>Password must have at least 1 of [a - z]</li>
+                                        <li>Password must have at least 1 of [A - Z]</li>
+                                        <li>Password must have at least 1 of [0 - 9]</li>
+                                        <li>Password must have at least 1 of [$@#&!]</li>
+                                    </ul>
+                                    </div>
+                                    </div>
                                 </p>
 
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signup-password"> Confirm Password</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-password" type="password"  placeholder="Confirm Password" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="confirm-password" type="password"  placeholder="Confirm Password" required>
                                 </p>
 
                                 <p class="signin-modal-fieldset">
-                                    <input type="checkbox" id="accept-terms" class="signin-modal-input" reqviewsred checked>
+                                    <input type="checkbox" id="accept-terms" class="signin-modal-input" required checked>
                                     <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
                                 </p>
 
@@ -92,18 +106,18 @@
                             <form class="signin-modal-form">
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_email signin-modal-label_image" for="signin-email">E-mail</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-email" type="email" placeholder="E-mail" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-email" type="email" placeholder="E-mail" required>
+
                                 </p>
 
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_password signin-modal-label_image" for="signin-password">Password</label>
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-password" type="password"  placeholder="Password" reqviewsred>
-                                    <span class="signin-modal-error">Error message here!</span>
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-password" type="password"  placeholder="Password" required>
+
                                 </p>
 
                                 <p class="signin-modal-fieldset">
-                                    <input type="checkbox" id="remember-me" checked class="signin-modal-input" reqviewsred>
+                                    <input type="checkbox" id="remember-me" checked class="signin-modal-input" required>
                                     <label for="remember-me">Remember me</label>
                                 </p>
 
@@ -122,6 +136,7 @@
                     </div>
                 </div>
                 <div class="main-content">
+                  <span class="welcome"></span>
                     <div class="bgimg">
                         <div class="wrapper">
                             <div class="content-food">
@@ -136,19 +151,19 @@
                     <h2 class="title"> How to get started, Bringing food to your door.</h2>
                     <ul class="howtostart-list">
                         <li class="howtostart-item">
-                          <img class="icon-address" src="views/Resources/images/address.png">
+                          <img class="icon-address" src="Resources/images/address.png">
                           <h4>We Need Your Address</h4>
                           <p>
                             Register and add your details.
                           </p>
                         </li>
                         <li class="howtostart-item">
-                          <img class="icon-order" src="views/Resources/images/order.png">
+                          <img class="icon-order" src="Resources/images/order.png">
                           <h4>Make an Order from <a href="#blog">what we offer</a></h4>
                           <p>Make your choice breakfast, Launch and Dinner will be at your doorstep</p>
                         </li>
                         <li class="howtostart-item">
-                          <img class="icon-van" src="views/Resources/images/Pay_on_Delivery.png">
+                          <img class="icon-van" src="Resources/images/Pay_on_Delivery.png">
                           <h4>Make Payments on Delivery</h4>
                           <p>
                             Pay with Cash on Delivery, Make your reciept avialable.
@@ -176,7 +191,7 @@
                         <div class="food-wrap">
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/chickenNdChipz.png" alt="">
+                                    <img src="Resources/images/chickenNdChipz.png" alt="">
                                 </div>
                                 <div class="item-body">
                                     <h3 class="title">Chicken and Chips</h3>
@@ -185,7 +200,7 @@
                             </div>
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/babacue.png" alt="">
+                                    <img src="Resources/images/babacue.png" alt="">
                                 </div>
                                 <div class="item-body">
                                     <h3 class="title">Fish Babacue</h3>
@@ -194,7 +209,7 @@
                             </div>
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/turkey.png" alt="">
+                                    <img src="Resources/images/turkey.png" alt="">
                                 </div>
                                 <div class="item-body">
                                     <h3 class="title">Full Turkey</h3>
@@ -203,7 +218,7 @@
                             </div>
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/Boiled-yam-and-egg-sauce.png" alt="">
+                                    <img src="Resources/images/Boiled-yam-and-egg-sauce.png" alt="">
                                 </div>
                                 <div class="item-body">
                                     <h3 class="title">Boiled Yam and Sauce</h3>
@@ -212,7 +227,7 @@
                             </div>
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/Nigeria-Jollof-rice.png" alt="">
+                                    <img src="Resources/images/Nigeria-Jollof-rice.png" alt="">
                                 </div>
                                 <div class="item-body">
                                         <h3 class="title">Nigerian Jollof Rice</h3>
@@ -221,7 +236,7 @@
                             </div>
                             <div class="items">
                                 <div class="item-image">
-                                    <img src="views/Resources/images/beans-spagetti.jpg" alt="">
+                                    <img src="Resources/images/beans-spagetti.jpg" alt="">
                                 </div>
                                 <div class="item-body">
                                     <h3 class="title">Bans and Spagetti</h3>
@@ -268,8 +283,8 @@
                             <ul>
                                 <li><a href="#blog">what do you care for ?</a></li>
                                 <li><a href="#contact">FAQs</a></li>
-                                <li><a href="views/login.html">Login</a></li>
-                                <li><a href="views/signup.html">Join</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="signup.html">Join</a></li>
                             </ul>
                         </div>
                         <div class="section-social">
@@ -295,6 +310,7 @@
                 </div>
             </div>
         </div>
-        <script src="views/Resources/js/index.js"></script>
+        <script src="Resources/js/index.js"></script>
+        <!-- <script src="Resources/js/validator.js"></script> -->
     </body>
 </html>

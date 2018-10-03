@@ -516,6 +516,13 @@ h2.contact-us-title {
     font-size: 16px;
 }
 
+.main-content > .welcome {
+  padding: 10px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 22px;
+  font-weight: 600;
+}
 /* media Queries */
 
 @media only screen and (max-width: 800px) {
