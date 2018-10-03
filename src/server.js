@@ -27,6 +27,9 @@ app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Credentials', 'true');
 	next();
 });
+
+requestRoutes(app);
+
 app.get('/', (req, res) => {
 	res.status(200).json({ message:'Welcome to Fast-Food-Fast' });
 });
@@ -35,7 +38,6 @@ app.get('*', (req, res) => {
 	res.status(404).json({ message: 'The requested Url was not found' });
 });
 
-requestRoutes(app);
 
 const port = process.env.PORT || 3000;
 
