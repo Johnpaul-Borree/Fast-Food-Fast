@@ -277,7 +277,7 @@ confirmPassword.Validation.validInput = confirmPasswordValidation;
 const inputs = document.querySelectorAll('.signup-input');
 
 
-const submit = document.querySelector('input[type="submit"');
+const submit = document.querySelector('.submitButton');
 
 function validate() {
 	for (let i = 0; i < inputs.length; i++) {

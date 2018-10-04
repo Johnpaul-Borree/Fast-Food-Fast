@@ -68,7 +68,8 @@ a {
     font-weight: 600;
     color: #333;
 }
-.signin-modal-block > .error {
+.signin-modal-block > .error,
+.login > .error {
   position: fixed;
   top: 7%;
   left: 10px;
@@ -80,7 +81,8 @@ a {
   font-weight: 600;
   visibility: hidden;
 }
-.signin-modal-block > .error.visible {
+.signin-modal-block > .error.visible,
+.login > .error.visible {
   visibility: visible;
 }
   @media only screen and (min-width: 600px) {
