@@ -42,7 +42,7 @@
                         <div class="signin-modal-block js-signin-modal-block" data-type="signup">
                             <span class="error"></span>
                                 <h2 class="greetme">Create Account</h2>
-                            <form action="#" class="signin-modal-form">
+                            <form action="#" class="signin-modal-form signup">
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_fullname signin-modal-label_image" for="signup-fullname">Full Name</label>
                                     <input class="signin-modal-input signup-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signup-fullname" type="text" placeholder="fullname" required>
@@ -95,16 +95,17 @@
                                 </p>
 
                                 <p class="signin-modal-fieldset">
-                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding" type="submit" value="Create account">
+                                    <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding submitButton" type="submit" value="Create account">
                                 </p>
                             </form>
                             <div class="signin-modal-switcher js-signin-modal-switcher js-signin-modal-trigger">
                                 <p>Already have an account? <a href="#0" data-signin="login" data-type="login">Login</a></p>
                             </div>
                         </div>
-                        <div class="signin-modal-block js-signin-modal-block" data-type="login">
+                        <div class="signin-modal-block login js-signin-modal-block" data-type="login">
+                            <span class="error"></span>
                             <h2 class="greetme">Welcome Back</h2>
-                            <form class="signin-modal-form">
+                            <form class="signin-modal-form loginForm">
                                 <p class="signin-modal-fieldset">
                                     <label class="signin-modal-label signin-modal-label_email signin-modal-label_image" for="signin-email">E-mail</label>
                                     <input class="signin-modal-input signin-modal-input_full-width signin-modal-input_has-padding signin-modal-input_has-border" id="signin-email" type="email" placeholder="E-mail" required>
@@ -313,5 +314,6 @@
         <script src="Resources/js/validator.js"></script>
         <script src="Resources/js/jwt-decode.min.js"></script>
         <script src="Resources/js/signup.js"></script>
+        <script src="Resources/js/login.js"></script>
     </body>
 </html>
