@@ -1,5 +1,5 @@
 
-const signin = document.querySelector('.signin-modal-form');
+const signin = document.querySelector('.signup');
 
 const userSignUp = (evt) => {
 	evt.preventDefault();
