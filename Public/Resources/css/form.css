@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.signin-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(175, 118, 213, 0.534);
+    z-index: 300;
+    overflow-y: auto;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+
+}
+
+.signin-modal.signin-modal--is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.signin-modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    margin: 3em auto 4em;
+    cursor: auto;
+    border-radius: 0.25em;
+    transform: translateY(-30px);
+    transition: transform 0.3s;
+}
+
+.signin-modal--is-visible .signin-modal-container {
+    transform: translateY(0);
+}
+
+.signin-modal-block > .greetme {
+    text-align: center;
+    padding-top: 20px;
+    line-height: 1.2;
+    font-family: 'Poppins-Bold' serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.signin-modal-switcher {
+    text-align: center;
+    padding: 10px;
+    font-family: 'Poppins-Medium' sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+.signin-modal-block > .error {
+  position: fixed;
+  top: 7%;
+  left: 10px;
+  color: #ff4545;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  visibility: hidden;
+}
+.signin-modal-block > .error.visible {
+  visibility: visible;
+}
+  @media only screen and (min-width: 600px) {
+
+    .signin-modal-container {
+      margin: 4em auto;
+    }
+  }
+
+  .signin-modal-form {
+    padding: 1.4em;
+  }
+
+  .signin-modal-fieldset {
+    position: relative;
+    margin: 1.4em 0;
+  }
+
+  .signin-modal-fieldset:first-child {
+    margin-top: 0;
+  }
+
+  .signin-modal-fieldset:last-child {
+    margin-bottom: 0;
+  }
+
+  .signin-modal-label {
+    font-size: 1.4rem;
+  }
+
+  .signin-modal-label.signin-modal-label_image {
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+  }
+
+  .signin-modal-label.signin-modal-label_fullname {
+    background-image: url("../images/signup/icon-username.svg");
+  }
+
+  .signin-modal-label.signin-modal-label_email {
+    background-image: url("../images/signup/icon-email.svg");
+  }
+
+  .signin-modal-label.signin-modal-label_phone {
+    background-image: url("../images/signup/vintage-cellphone.svg");
+  }
+
+  .signin-modal-label.signin-modal-label_password {
+    background-image: url("../images/signup/icon-password.svg");
+  }
+
+  .signin-modal-input {
+    margin: 0;
+    padding: 0;
+    border-radius: 0.25em;
+  }
+
+  .signin-modal-input.signin-modal-input_full-width {
+    width: 100%;
+  }
+
+  .signin-modal-input.signin-modal-input_has-padding {
+    padding: 12px 20px 12px 50px;
+  }
+
+  .signin-modal-input.signin-modal-input_has-border {
+    border: 1px solid #d2d8d8;
+    appearance: none;
+  }
+
+  .signin-modal-input.signin-modal-input_has-border:focus {
+    border-color: #343642;
+    -webkit-box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+            box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+    outline: none;
+  }
+
+  .signin-modal-input.signin-modal-input_has-error {
+    border: 1px solid #d76666;
+  }
+
+  .signin-modal-input[type=submit] {
+    padding: 16px 0;
+    cursor: pointer;
+    background: #4c72ac;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    appearance: none;
+  }
+
+  .signin-modal-input[type=submit]:hover, .signin-modal-input[type=submit]:focus {
+    background: #3599ae;
+    outline: none;
+  }
+
+  .instruct{
+    padding: 19px;
+    display: none;
+    margin-left:3%;
+    width: 80%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #111;
+    background: #fdf9d0ec;
+    border: 1px solid #D5CEC8;
+    border-radius: 3px;
+    transition: 1s ease all;
+}
+
+.instruct.show{
+    display: block;
+}
+.instruct > .info > ul{
+    list-style-type: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+.instruct > .info > ul li{
+    padding: 2px 0 0 20px;
+}
+.instruct > .info > ul li.valid{
+    background-position: left -42px;
+    color: green;
+
+}
+.instruct > #password-status{
+    display: block;
+    height: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.4s ease;
+}
+.checks {
+    font-size: 16px;
+    font-style: italic;
+    text-align: left;
+    margin: 10px auto;
+    color: rgb(150,150,150);
+  }
+
+
+  .checks li.invalid {
+      color: #e74c3c;
+  }
+  .checks li.valid {
+      color: #2ecc71;
+  }
+
+  .checks li.valid:after {
+      display: inline-block;
+      padding-left: 10px;
+      content: "\2713";
+  }
+.strength0 {
+    background: none;
+    width: 0px;
+}
+.strength1 {
+    background: none repeat scroll 0 0 #ff4545;
+    width: 20%;
+}
+.strength2 {
+    background: none repeat scroll 0 0 rgb(228, 32, 228);
+    width: 40%;
+}
+.strength3 {
+    background: none repeat scroll 0 0 #ffc824;
+    width: 60%;
+}
+
+.strength4 {
+    background: none repeat scroll 0 0 #008000;
+    width: 80%;
+}
+#strength-status{
+    color: #999;
+}
+
+  @media only screen and (min-width: 600px) {
+    .signin-modal-form {
+      padding: 2em;
+    }
+    .signin-modal-fieldset {
+      margin: 2em 0;
+    }
+    .signin-modal-fieldset:first-child {
+      margin-top: 0;
+    }
+    .signin-modal-fieldset:last-child {
+      margin-bottom: 0;
+    }
+    .signin-modal-input.signin-modal__input--has-padding {
+      padding: 16px 20px 16px 50px;
+    }
+    .signin-modal-input[type=submit] {
+      padding: 16px 0;
+    }
+  }
+
+  .signin-modal-message {
+    padding: 1.4em 1.4em 0;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .signin-modal-message {
+      padding: 2em 2em 0;
+    }
+  }
+
+  .signin-modal-bottom-message {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -30px;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  .signin-modal-bottom-message a {
+    color: #FFF;
+    text-decoration: underline;
+    font-size: 12px;
+  }
+
+  .signin-modal-close {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    top: 0px;
+    background: url("../img/icon-close.svg") no-repeat center center;
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  @media only screen and (min-width: 1170px) {
+    .signin-modal-close {
+      display: none;
+    }
+  }
+
+  .signin-modal-block {
+    display: none;
+  }
+
+  .signin-modal-block.signin-modal-block--is-selected {
+    display: block;
+  }
+
+@media only screen and (max-width: 400px) {
+    .signup > li > a {
+        font-size: 12px;
+        border-radius: 50em;
+    }
+}
