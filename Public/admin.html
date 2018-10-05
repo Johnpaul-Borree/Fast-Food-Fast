@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="Resources/css/index.css" rel="stylesheet">
         <link rel="stylesheet" href="Resources/css/views.css">
+        <link rel="stylesheet" href="Resources/css/admin.css">
         <link rel="icon" type="image/png" href="Resources/images/logo1.png">
     </head>
     <body>
@@ -18,9 +19,9 @@
                 <div class="wrapper">
                     <ul class="navbar" data-mode="close">
                         <div class="navbar-left">
-                            <li class="nav-items"><a href="#blog">Services</a></li>
-                            <li class="nav-items"><a href="#about">About us</a></li>
-                            <li class="nav-items"><a href="#contact">Contact</a></li>
+                            <li class="nav-items"><a href="index.html#blog">Services</a></li>
+                            <li class="nav-items"><a href="index.html#about">About us</a></li>
+                            <li class="nav-items"><a href="index.html#contact">Contact</a></li>
                         </div>
                         <div class="navbar-logoholder">
                             <li class="nav-items logo">
@@ -30,7 +31,7 @@
                             </li>
                         </div>
                         <div class="navbar-right">
-                            <li class="nav-items"><a href="order.html">Make Your Order</a></li>
+                            <li class="nav-items"><a href="menu.html">Make Your Order</a></li>
                             <li class="nav-items logout"><a href="#">Logout</a></li>
                         </div>
                     </ul>
@@ -42,6 +43,23 @@
                         <div class="history-title">
                             <h2 class="title">Admin Page</h2>
                             <p>view orders for Approval</p>
+                        </div>
+                        <div class="add-meals">
+                          <a href="#">Add Meals To menu</a>
+                        </div>
+                        <div class="post-meal-modal">
+                          <div class="meals-container">
+                              <span class="close-button">&times;</span>
+                              <h2>Post a meal by completing the fields</h2>
+                              <form action="javascript:void(0);" class="post-meal-input">
+                                      <span class="error"></span>
+                                      <input type="text" placeholder="Add a meal" name="meal" required id="name">
+                                      <textarea name="description" required placeholder="Add descriptions about meal" id="meal-description"></textarea>
+                                      <input type="file" id="image-file" name="file">
+                                      <input type="text" required placeholder="Add price" id="price">
+                                      <input type="submit" value="Add Meal" id="post-meal">
+                              </form>
+                          </div>
                         </div>
                         <div class="order-container">
                             <div class="title-status">
@@ -313,7 +331,9 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
         <script src="Resources/js/index.js"></script>
+        <script src="Resources/js/admin.js"></script>
         <script src="Resources/js/logout.js"></script>
     </body>
 </html>

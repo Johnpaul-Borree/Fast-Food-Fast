@@ -38,6 +38,7 @@ router.post('/menu', (req, res) => {
 					menu.addMenu({
 						productName: req.body.productName,
 						description: req.body.description,
+						productImage: req.body.productImage,
 						price: req.body.price,
 					})
 						.then((result) => {
@@ -49,7 +50,7 @@ router.post('/menu', (req, res) => {
 							res.status(500).json({ status: 'failed', message: 'Problem adding menu' });
 						});
 				} else {
-					res.status(403).json({ status: 'failed', message: 'item exist', email: itemExist.productName });
+					res.status(403).json({ status: 'failed', message: 'item exist', item: itemExist.productName });
 				}
 			});
 	} else {

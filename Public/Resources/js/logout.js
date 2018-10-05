@@ -1,7 +1,7 @@
 const logout = document.querySelector('.logout');
 
 const signoutUser = () => {
-	const logout = confirm('Are You Really Leaving?');
+	const logout = confirm('Logout from Fast Food?');
 	if(logout){
 		localStorage.removeItem('token');
 		location.assign('index.html');

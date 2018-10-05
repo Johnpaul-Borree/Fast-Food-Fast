@@ -19,9 +19,10 @@ app.set('json spaces', 40);
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+	res.header('Access-Control-Expose-Headers', 'x-auth-token');
 	res.header(
 		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content-Type, Accept, ' +
+		'Origin, X-Requested-With, x-auth-token, Content-Type, Accept, ' +
  'Authorization, Access-Control-Allow-Credentials'
 	);
 	res.header('Access-Control-Allow-Credentials', 'true');

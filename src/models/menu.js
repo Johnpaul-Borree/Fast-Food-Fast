@@ -10,6 +10,7 @@ class Menu {
 		this.pool = pool;
 		this.productName = null;
 		this.description = null;
+		this.image = null;
 		this.userId = null;
 		this.admin = false;
 		this.price = 0;
@@ -21,9 +22,9 @@ class Menu {
 	addMenu(input) {
 		const query = {
 			text: `INSERT INTO products (
-          name, description, price
-          ) VALUES($1, $2, $3) RETURNING *`,
-			values: [input.productName, input.description, input.price],
+          name, description, product_image, price
+          ) VALUES($1, $2, $3, $4) RETURNING *`,
+			values: [input.productName, input.description, input.image, input.price],
 		};
 		return this.pool.query(query)
 			.then(result => result)

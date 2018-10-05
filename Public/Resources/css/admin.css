@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Marck+Script');
+
+.history > .add-meals {
+  width: 30%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 3px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  background: rgb(98, 153, 10);
+  margin-bottom: 5%;
+}
+
+.history > .post-meal-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+
+}
+
+.post-meal-modal > .meals-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem 3rem;
+  width: 60%;
+  border-radius: 0.5rem;
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+
+.meals-container > form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.meals-container > form > input[type="text"]{
+  color: #979797;
+  height: 28px;
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 5px solid white;
+  box-shadow:
+    inset 0 0 10px  rgba(0,0,0,0.1),
+          0 0 20px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.5);
+  margin: 1% auto;
+  width: 60%;
+  font-size: 12px;
+}
+
+.meals-container > form > input[type="file"] {
+  color: #979797;
+  height: 28px;
+  padding: 15px;
+  padding-top: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 5px solid white;
+  box-shadow:
+    inset 0 0 10px  rgba(0,0,0,0.1),
+          0 0 20px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.5);
+  margin: 1% auto;
+  width: 60%;
+  font-size: 12px;
+}
+
+.meals-container > form > textarea {
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow:
+  inset 0 0 10px  rgba(0,0,0,0.1),
+        0 0 20px rgba(0,0,0,0.1);
+  display: block;
+  font-family: 'Marck Script',cursive;
+  color: #000f55;
+  font-size: 22px;
+  line-height: 50px;
+  margin: 4% auto;
+  padding: 11px 20px 0 20px;
+  resize: none;
+  height: 30vh;
+  width: 60%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.meals-container > form > textarea:focus,
+.meals-container > form > input[type="text"]:focus {
+  outline: none;
+}
+
+.meals-container > form > #post-meal {
+  color: #fff;
+  height: 28px;
+  padding: 15px 20px 25px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  background: #33493e;
+  margin: 5% auto;
+  width: 40%;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+}
+
+.meals-container > h2 {
+  font-size: 22px;
+  text-align: center;
+  padding: 20px 30px;
+}
+.meals-container > form > #post-meal:hover,
+.meals-container > form > #post-meal:focus{
+  background: #33442d;
+  outline: none;
+}
+
+.history > .post-meal-modal.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.post-meal-input > .error {
+  position: fixed;
+  top: 7%;
+  left: 10px;
+  color: #ff4545;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  visibility: hidden;
+}
+.post-meal-input > .error.visible {
+  visibility: visible;
+}

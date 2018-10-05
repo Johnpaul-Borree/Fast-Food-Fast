@@ -68,10 +68,9 @@ a {
     font-weight: 600;
     color: #333;
 }
-.signin-modal-block > .error,
-.login > .error {
+.signin-modal-block > .error{
   position: fixed;
-  top: 7%;
+  top: 18%;
   left: 10px;
   color: #ff4545;
   padding: 20px;
@@ -81,6 +80,20 @@ a {
   font-weight: 600;
   visibility: hidden;
 }
+
+.login > .error {
+  position: fixed;
+  top: 12%;
+  left: 10px;
+  color: #ff4545;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  visibility: hidden
+}
+
 .signin-modal-block > .error.visible,
 .login > .error.visible {
   visibility: visible;
