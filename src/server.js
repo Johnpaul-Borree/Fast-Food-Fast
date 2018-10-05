@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
-app.use(express.static('./public'));
+app.use(express.static('./Public'));
 app.set('json spaces', 40);
 
 app.use((req, res, next) => {
