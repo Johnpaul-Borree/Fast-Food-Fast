@@ -17,7 +17,6 @@ export default class CreateTableSchema {
         is_admin boolean DEFAULT false
       )`;
 
-      this.dropProduct = 'DROP TABLE IF EXISTS products';
 		this.createProductsTable = `CREATE TABLE IF NOT EXISTS products(
         product_number serial PRIMARY KEY NOT NULL,
         name varchar(255) NOT NULL,
@@ -53,8 +52,7 @@ export default class CreateTableSchema {
  *
  */
 	create() {
-    return this.pool.query(this.createUsersTable)
-    .then(() => this.pool.query(this.dropProduct))
+		return this.pool.query(this.createUsersTable)
 			.then(() => this.pool.query(this.createProductsTable))
 			.then(() => this.pool.query(this.createOrdersTable))
 			.then(() => this.pool.query(this.createOrderItemsTable))
